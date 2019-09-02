@@ -5,7 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,7 +32,7 @@ public class TypeController {
 		e.printStackTrace();
 	}
 
-	@RequestMapping("index")
+	@GetMapping("index")
 	public @ResponseBody ReturnInfo select(String txt, Integer page, Integer limit) {
 		if (txt != null && txt.length() > 0)
 			txt = " where type.name like '%" + txt + "%'";
@@ -37,30 +42,28 @@ public class TypeController {
 	}
 
 	// 修改
-	@RequestMapping("edit")
-	public @ResponseBody Type edit(Integer id) {
+	@GetMapping("{id}")
+	public @ResponseBody Type edit(@PathVariable("id") Integer id) {
 		return service.selectById(id);
 	}
-	@RequestMapping("update")
+	// 修改
+	@PutMapping("{id}")
 	public @ResponseBody String update(Type b) {
 		service.update(b);
 		return "{\"status\":1}";
 	}
 
-	@RequestMapping("insert")
+	// 新增
+	// @PostMapping("insert") 等价于 @PostMapping(value="insert")
+	@PostMapping("insert")
 	public @ResponseBody String insert(Type b) {
 		service.insert(b);
 		return "{\"status\":1}";
 	}
 
-	@RequestMapping("getTypes")
-	public @ResponseBody Type getTypes(Integer id) {
-		return service.selectById(id);
-	}
-
 	// 删除
-	@RequestMapping("delete")
-	public @ResponseBody String delete(Integer id, ModelMap m) {
+	@DeleteMapping("{id}")
+	public @ResponseBody String delete(@PathVariable("id") Integer id, ModelMap m) {
 		service.delete(id);
 		return "{\"status\":1}";
 	}

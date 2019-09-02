@@ -25,13 +25,18 @@
 </style>
 </head>
 <body>
+	<!--数据表格-->
 	<table id="demo" lay-filter="test"></table>
-	
+	<!--按钮-->
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
-	
+	<!--自增索引 -->
+	<script type="text/html" id="zizeng">
+		{{d.LAY_TABLE_INDEX+1}}
+	</script>
+	<!--数据表格上面的工具栏-->
 	<script type="text/html" id="toolbarDemo">
 	   <div class="layui-btn-container">
      	  <div class="layui-input-inline">
@@ -50,39 +55,45 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'index.action' //数据接口
-				,
+				url : 'index',//数据接口
 				toolbar : '#toolbarDemo',
-				page : true //开启分页
-				,
-				cols : [ [ //表头
-				{
-					field : 'id',
-					title : 'ID',
-					width : 80,
-					sort : true,
-					fixed : 'right'
-				}, {
-					field : 'name',
-					title : '用户名',
-					width : 280
-				}, {
-					field : 'sexname',
-					title : '性别',
-					width : 180
-				}, {
-					field : 'typename',
-					title : '类型',
-					width : 180
-				}, {
-					fixed : 'right',
-					title : '操作',
-					toolbar : '#barDemo',
-					width : 150,
-					align : 'center'
-				}
-
-				] ],
+				page : true,//开启分页
+				cols : [
+					[ //表头
+							{
+								field : 'zizeng',
+								title : '编号',
+								width : 80,
+								sort : true,
+								fixed : 'left',
+								type:'numbers'
+							}, {
+								field : 'id',
+								title : 'ID',
+								width : 80,
+								sort : true,
+								fixed : 'right'
+							}, {
+								field : 'name',
+								title : '作家',
+								width : 280
+							}, {
+								field : 'sexname',
+								title : '性别',
+								width : 180
+							}, {
+								field : 'typename',
+								title : '类型',
+								width : 180
+							}, {
+								fixed : 'right',
+								title : '操作',
+								toolbar : '#barDemo',
+								width : 150,
+								align : 'center'
+							}
+						] 
+					],
 				parseData : function(res) {
 					return {
 						"code" : res.code,
@@ -93,20 +104,26 @@
 				}
 			});
 
-			//obj 行      obj.data 行数据    data.id 列
+			//obj 行      obj.data 行数据    data.id 这一行数据里面的id值
 			//test  是table的lay-filter="test" 属性
 			table.on('tool(test)', function(obj) {
 				var data = obj.data;
 				if (obj.event === 'del') { ///lay-event 属性
-
+					
 					myconfirm("刪除？", function() { // 删除
-						$.post("delete.action", {
-							id : data.id
-						}, function(json) {
-							/* reload('demo'); */
-							obj.del();
-							layer.close(layer.index);
-						}, "json");
+						
+						
+						 $.ajax({
+							url:''+data.id,
+				            type:'POST', 
+				            data:{ _method:"DELETE"}, //请求方法，GET、POST、PUT、DELETE在这里设置
+				            //dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+				            success:function(json){
+				            	obj.del();
+								layer.close(layer.index);
+				            }
+				        }, 'json'); 
+						
 					});
 				} else {
 					openFrame('edit.jsp?id=' + data.id); // 修改

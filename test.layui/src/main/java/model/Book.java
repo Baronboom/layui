@@ -16,15 +16,27 @@ public class Book {
 	}
 	
 	
-	private int id;
+	private Integer id;
 	private String name;
 	private int sex;
 
-	private int typeid;
+	private Integer typeid;
 	
 	
 
 
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getTypeid() {
+		return typeid;
+	}
+	public void setTypeid(Integer typeid) {
+		this.typeid = typeid;
+	}
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,15 +45,6 @@ public class Book {
 	public Book(String name) {
 		super();
 		this.name = name;
-	}
-
-	public int getTypeid() {
-		return typeid;
-	}
-
-
-	public void setTypeid(int typeid) {
-		this.typeid = typeid;
 	}
 
 
@@ -54,13 +57,6 @@ public class Book {
 		this.sex = sex;
 	}
 
-
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}

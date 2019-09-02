@@ -1,2 +1,7 @@
 http://localhost:8080/test.layui/Book/index.jsp
 http://localhost:8080/test.layui/Type/index.jsp
+
+分支1 
+restful规则
+
+web.xml配置文件 HiddenHttpMethodFilter
