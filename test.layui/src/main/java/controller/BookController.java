@@ -13,6 +13,7 @@ import model.Book;
 import model.Type;
 import service.Book_Service;
 import utils.ReturnInfo;
+import utils.ReturnJson;
 
 @Controller
 @RequestMapping("Book")
@@ -35,9 +36,9 @@ public class BookController {
 	}
 	
 	@RequestMapping("insert")
-	public @ResponseBody String insert(Book b){
+	public @ResponseBody ReturnJson insert(Book b){
 		service.insert(b);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 	
 	// ÐÞ¸Ä
@@ -47,9 +48,9 @@ public class BookController {
 	}
 	
 	@RequestMapping("update")
-	public @ResponseBody String update(Book b){
+	public @ResponseBody ReturnJson update(Book b){
 		service.update(b);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 	
 	@RequestMapping("getSexs")
@@ -63,10 +64,16 @@ public class BookController {
 	}
 
 	// É¾³ý
+//	@RequestMapping("delete")
+//	public @ResponseBody String delete(Book b, ModelMap m) {
+//		service.delete(b);
+//		return "{\"status\":1}";
+//	}
+	
 	@RequestMapping("delete")
-	public @ResponseBody String delete(Book b, ModelMap m) {
+	public @ResponseBody ReturnJson delete(Book b, ModelMap m) {
 		service.delete(b);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 	
 }
