@@ -13,6 +13,7 @@ import model.Book;
 import model.Type;
 import service.Type_Service;
 import utils.ReturnInfo;
+import utils.ReturnJson;
 
 @Controller
 @RequestMapping("Type")
@@ -42,15 +43,15 @@ public class TypeController {
 		return service.selectById(id);
 	}
 	@RequestMapping("update")
-	public @ResponseBody String update(Type b) {
+	public @ResponseBody ReturnJson update(Type b) {
 		service.update(b);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 
 	@RequestMapping("insert")
-	public @ResponseBody String insert(Type b) {
+	public @ResponseBody ReturnJson insert(Type b) {
 		service.insert(b);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 
 	@RequestMapping("getTypes")
@@ -60,9 +61,9 @@ public class TypeController {
 
 	// É¾³ý
 	@RequestMapping("delete")
-	public @ResponseBody String delete(Integer id, ModelMap m) {
+	public @ResponseBody ReturnJson delete(Integer id, ModelMap m) {
 		service.delete(id);
-		return "{\"status\":1}";
+		return new ReturnJson();
 	}
 
 }
