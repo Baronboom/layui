@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link href="../layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../layui/layui.all.js"></script>
-<script src="../js/jquery-2.2.4.min.js" ></script>
+<script src="../js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="../js/my.js"></script>
 <title></title>
 <style type="text/css">
@@ -25,9 +25,13 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<!--自增索引 -->
+	<script type="text/html" id="zizeng">
+		{{d.LAY_TABLE_INDEX+1}}
+	</script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
     <div class="layui-input-inline">
@@ -47,29 +51,36 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'index.action' //数据接口
+				url : 'index' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
 				cols : [ [ //表头
-				{
-					field : 'id',
-					title : 'ID',
-					width : 80,
-					sort : true,
-					fixed : 'right'
-				}, {
-					field : 'name',
-					title : '类型',
-					width : 180
-				}, {
-					fixed : 'right',
-					title : '操作',
-					toolbar : '#barDemo',
-					width : 150,
-					align : 'center'
-				}
+					{
+						field : 'zizeng',
+						title : '编号',
+						width : 80,
+						sort : true,
+						fixed : 'left',
+						type:'numbers'
+					},{
+						field : 'id',
+						title : 'ID',
+						width : 80,
+						sort : true,
+						fixed : 'right'
+					}, {
+						field : 'name',
+						title : '类型',
+						width : 180
+					}, {
+						fixed : 'right',
+						title : '操作',
+						toolbar : '#barDemo',
+						width : 150,
+						align : 'center'
+					}
 
 				] ],
 				parseData : function(res) {
@@ -91,7 +102,8 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){     // 删除
-						$.post("delete.action", {id : data.id}, 
+						/* 这里的url什么都不用写，因为你能运行到这个jsp，说明你已经在Type地址里了*/
+						$.post(""+data.id, {_method:"DELETE"}, 
 								function(json) {
 							/* reload('demo'); */ 
 							obj.del();

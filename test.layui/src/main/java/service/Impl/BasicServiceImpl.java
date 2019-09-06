@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import service.BasicService;
 import utils.ReturnInfo;
 
-@Service
 public class BasicServiceImpl<T> implements BasicService<T> {
 
 	private Object execDao(String mname,Object... objs){

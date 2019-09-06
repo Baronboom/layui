@@ -41,28 +41,32 @@ public class BasicController<T> {
 		return (Class<T>) pt.getActualTypeArguments()[0];
 	}
 	
-	@RequestMapping("{id}")
+	
+	@GetMapping("index")
+	public @ResponseBody ReturnInfo index(SearchInfo info,Integer page,Integer limit,ModelMap m) {
+		System.out.println("basic_index");
+		return basicservice.select(info.getTxt(),page,limit);
+	}
+	@GetMapping("{id}")
 	public @ResponseBody T edit(@PathVariable("id") int id,ModelMap m) {
 		return basicservice.selectById(id);
 	}
-	@RequestMapping("index")
-	public @ResponseBody ReturnInfo index(SearchInfo info,Integer page,Integer limit,ModelMap m) {
-		return basicservice.select(info.getTxt(),page,limit);
-	}
 	
-	@RequestMapping()
+	
+	
+	@PostMapping()
 	public @ResponseBody ReturnJson insert( T t,ModelMap m) {
 		basicservice.insert(t);
 		return new ReturnJson();
 	}
 	
-	@RequestMapping("{id}")
+	@DeleteMapping("{id}")
 	public @ResponseBody ReturnJson delete(@PathVariable("id") int id,ModelMap m) {
 		basicservice.delete(id);
        return new ReturnJson();
 	}
 	
-	@RequestMapping("{id}")
+	@PutMapping("{id}")
 	public @ResponseBody ReturnJson update(T t,ModelMap m) {
 		basicservice.update(t);
 		return new ReturnJson();

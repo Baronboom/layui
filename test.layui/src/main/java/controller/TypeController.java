@@ -24,7 +24,9 @@ public class TypeController  extends BasicController<Type> {
 	Type_Service service;
 
 	@Override
+	@RequestMapping("index")
 	public @ResponseBody ReturnInfo index(SearchInfo info, Integer page, Integer limit, ModelMap m) {
+		System.out.println("type_index");
 		String where = "";
 		if (info.getTxt()!= null && info.getTxt().length() > 0)
 			where = " where type.name like '%" + info.getTxt() + "%'";
