@@ -3,7 +3,6 @@ package controller;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.Impl.BasicServiceImpl;
 import utils.ReturnInfo;
 import utils.ReturnJson;
-import utils.SearchInfo;
 
 public class BasicController<T> {
 	BasicServiceImpl<T> basicservice;
@@ -43,18 +40,20 @@ public class BasicController<T> {
 	
 	
 	@GetMapping("index")
-	public @ResponseBody ReturnInfo index(SearchInfo info,Integer page,Integer limit,ModelMap m) {
+	public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit,ModelMap m) {
 		System.out.println("basic_index");
-		return basicservice.select(info.getTxt(),page,limit);
+		if(txt!=null&&txt.length()>0)txt=" where book.name like '%"+txt+"%'";
+		else txt="";
+		return basicservice.select(txt,page,limit);
 	}
-	@GetMapping("{id}")
-	public @ResponseBody T edit(@PathVariable("id") int id,ModelMap m) {
+	@GetMapping("edit/{id}")
+	public @ResponseBody T edit(@PathVariable("id") Integer id,ModelMap m) {
 		return basicservice.selectById(id);
 	}
 	
 	
 	
-	@PostMapping()
+	@PostMapping("insert")
 	public @ResponseBody ReturnJson insert( T t,ModelMap m) {
 		basicservice.insert(t);
 		return new ReturnJson();
@@ -71,5 +70,6 @@ public class BasicController<T> {
 		basicservice.update(t);
 		return new ReturnJson();
 	}
+
 
 }

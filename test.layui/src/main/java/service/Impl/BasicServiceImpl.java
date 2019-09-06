@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
 import service.BasicService;
 import utils.ReturnInfo;
@@ -31,15 +30,10 @@ public class BasicServiceImpl<T> implements BasicService<T> {
 		
 	}
 	
-//	public ReturnInfo select(String where, Integer page, Integer max) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	public ReturnInfo select(String where, Integer page, Integer max) {
 		boolean canpage=page!=null;
 		ReturnInfo info = new ReturnInfo();
-		info.setList((List) execDao("getWhere", where,ReturnInfo.getLimit(page, max)));
+		info.setList((List) execDao("select", where,ReturnInfo.getLimit(page, max)));
 		if(canpage)info.setCount((Integer)execDao("selectcount",where));
 		  return info;
 	}

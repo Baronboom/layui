@@ -36,8 +36,9 @@
 
 var id="${param.id}";
 function init(){
-	$.post(""+id,{_method:"GET"}, function(json) {
+	$.post("edit/"+id,{_method:"GET"}, function(json) {
 		render('myform', json);
+		getlist("getTypes", {_method:"GET"}, "[name=typeid]", json.typeid);
 	},"json");
 	
 }

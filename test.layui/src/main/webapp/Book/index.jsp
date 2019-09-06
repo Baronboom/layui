@@ -55,9 +55,9 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'index.action',//数据接口
-				method:"post",
-				where:{_methed:"GET"},
+				url : 'index',//数据接口
+				/* method:'post',
+				where:{_method:"GET"}, */
 				toolbar : '#toolbarDemo',
 				page : true,//开启分页
 				cols : [

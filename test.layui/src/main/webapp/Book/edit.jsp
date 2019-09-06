@@ -54,9 +54,7 @@
 	<script type="text/javascript">
 		var id = "${param.id}";
 		function init() {
-			$.post(""+id, {
-				_method:"GET"
-			}, function(json) {
+			$.post("edit/"+id, {_method:"GET"}, function(json) {
 				render('myform', json);
 				getarray("getSexs", {_method:"GET"}, "[name=sex]", json.sex);
 				getlist("getTypes", {_method:"GET"}, "[name=typeid]", json.typeid);
@@ -90,7 +88,8 @@
 					 上面这行代码可省略 */
 					 
 					// 下面代码里的insert/，是与控制层里的@PostMapping("insert")对应
-					$.post("insert/", data.field, function(json) {
+					data.field._method="POST";
+					$.post("insert", data.field, function(json) {
 						closeFrame();
 						parent.fresh('demo');
 					}, "json");

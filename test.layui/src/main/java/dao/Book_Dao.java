@@ -7,14 +7,10 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 
 import model.Book;
-import model.Type;
 
 @Repository
 public interface Book_Dao {
@@ -29,8 +25,11 @@ public interface Book_Dao {
 	
 	
 	// ²éÑ¯Type
-	@Select("select * from type")
-	public List<Type> selectType();
+/*	@Select("select * from type")
+	public List<Type> selectType();*/
+	
+	@Select("select * from book where id=#{id}")
+	public Book selectById(Integer id);
 	
 	// ÐÂÔö
 	@Insert("insert into book (name,sex,typeid) values(#{name},#{sex},#{typeid})")

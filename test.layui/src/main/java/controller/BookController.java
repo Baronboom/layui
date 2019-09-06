@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,7 +14,6 @@ import model.Type;
 import service.Book_Service;
 import service.Type_Service;
 import utils.ReturnInfo;
-import utils.ReturnJson;
 
 @Controller
 @RequestMapping("Book")
@@ -24,11 +23,6 @@ public class BookController extends BasicController<Book> {
 	Book_Service service;
 	@Autowired
 	Type_Service tservice;
-	// 异常处理
-//	@ExceptionHandler
-//	public void ex(Exception e) {
-//		e.printStackTrace();
-//	}
 //	
 //	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回
 //	@RequestMapping("index")
@@ -37,46 +31,23 @@ public class BookController extends BasicController<Book> {
 //		else txt="";
 //		return service.select(txt, page, limit);
 //	}
-//	
-//	@RequestMapping("insert")
-//	public @ResponseBody ReturnJson insert(Book b){
-//		service.insert(b);
-//		return new ReturnJson();
-//	}
-//	
-//	// 修改
-//	@RequestMapping("edit")
-//	public @ResponseBody Book edit(Integer id){
-//		return service.selectById(id);
-//	}
-//	
-//	@RequestMapping("update")
-//	public @ResponseBody ReturnJson update(Book b){
-//		service.update(b);
-//		return new ReturnJson();
-//	}
-//	
-//	@RequestMapping("getSexs")
-//	public @ResponseBody String[] getSexs() {
-//		return Book.sexs;
-//	}
-//	
-//	@RequestMapping("getTypes")
-//	public @ResponseBody List<Type> getTypes(){
-//		return service.selectType();
-//	}
+	
+	@GetMapping("index")
+	public @ResponseBody ReturnInfo index(String txt,Integer page,Integer limit,ModelMap m) {
+		System.out.println("basic_index");
+		if(txt!=null&&txt.length()>0)txt=" where book.name like '%"+txt+"%'";
+		else txt="";
+		return basicservice.select(txt,page,limit);
+	}
 
-	// 删除
-//	@RequestMapping("delete")
-//	public @ResponseBody String delete(Book b, ModelMap m) {
-//		service.delete(b);
-//		return "{\"status\":1}";
-//	}
+	@GetMapping("getSexs")
+	public @ResponseBody String[] getSexs() {
+		return Book.sexs;
+	}
 	
-//	@RequestMapping("delete")
-//	public @ResponseBody ReturnJson delete(Integer id, ModelMap m) {
-//		service.delete(id);
-//		return new ReturnJson();
-//	}
-	
+	@GetMapping("getTypes")
+	public @ResponseBody List<Type> getTypes(){
+		return tservice.selectType();
+	}
+
 }

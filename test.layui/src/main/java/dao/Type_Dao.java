@@ -23,7 +23,7 @@ public interface Type_Dao {
 	
 	// 查询一个
 	@Select("select * from type where id=#{id}")
-	public Type selectById(int id);
+	public Type selectById(Integer id);
 	
 	// 新增
 	@Insert("insert into type (name) values(#{name})")
@@ -36,5 +36,8 @@ public interface Type_Dao {
 	// 删除
 	@Delete("delete from type where id=#{id} ")
 	public void delete(Integer id);
+	
+	@Select("select * from type")
+	public List<Type> selectType();
 	
 }
