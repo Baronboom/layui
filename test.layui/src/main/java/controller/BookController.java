@@ -12,56 +12,59 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import model.Book;
 import model.Type;
 import service.Book_Service;
+import service.Type_Service;
 import utils.ReturnInfo;
 import utils.ReturnJson;
 
 @Controller
 @RequestMapping("Book")
-public class BookController {
+public class BookController extends BasicController<Book> {
 
 	@Autowired
 	Book_Service service;
+	@Autowired
+	Type_Service tservice;
 	// 异常处理
-	@ExceptionHandler
-	public void ex(Exception e) {
-		e.printStackTrace();
-	}
-	
-	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回
-	@RequestMapping("index")
-	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
-		if(txt!=null&&txt.length()>0)txt=" where book.name like '%"+txt+"%'";
-		else txt="";
-		return service.select(txt, page, limit);
-	}
-	
-	@RequestMapping("insert")
-	public @ResponseBody ReturnJson insert(Book b){
-		service.insert(b);
-		return new ReturnJson();
-	}
-	
-	// 修改
-	@RequestMapping("edit")
-	public @ResponseBody Book edit(Integer id){
-		return service.selectByid(id);
-	}
-	
-	@RequestMapping("update")
-	public @ResponseBody ReturnJson update(Book b){
-		service.update(b);
-		return new ReturnJson();
-	}
-	
-	@RequestMapping("getSexs")
-	public @ResponseBody String[] getSexs() {
-		return Book.sexs;
-	}
-	
-	@RequestMapping("getTypes")
-	public @ResponseBody List<Type> getTypes(){
-		return service.selectType();
-	}
+//	@ExceptionHandler
+//	public void ex(Exception e) {
+//		e.printStackTrace();
+//	}
+//	
+//	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回
+//	@RequestMapping("index")
+//	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
+//		if(txt!=null&&txt.length()>0)txt=" where book.name like '%"+txt+"%'";
+//		else txt="";
+//		return service.select(txt, page, limit);
+//	}
+//	
+//	@RequestMapping("insert")
+//	public @ResponseBody ReturnJson insert(Book b){
+//		service.insert(b);
+//		return new ReturnJson();
+//	}
+//	
+//	// 修改
+//	@RequestMapping("edit")
+//	public @ResponseBody Book edit(Integer id){
+//		return service.selectById(id);
+//	}
+//	
+//	@RequestMapping("update")
+//	public @ResponseBody ReturnJson update(Book b){
+//		service.update(b);
+//		return new ReturnJson();
+//	}
+//	
+//	@RequestMapping("getSexs")
+//	public @ResponseBody String[] getSexs() {
+//		return Book.sexs;
+//	}
+//	
+//	@RequestMapping("getTypes")
+//	public @ResponseBody List<Type> getTypes(){
+//		return service.selectType();
+//	}
 
 	// 删除
 //	@RequestMapping("delete")
@@ -70,10 +73,10 @@ public class BookController {
 //		return "{\"status\":1}";
 //	}
 	
-	@RequestMapping("delete")
-	public @ResponseBody ReturnJson delete(Book b, ModelMap m) {
-		service.delete(b);
-		return new ReturnJson();
-	}
+//	@RequestMapping("delete")
+//	public @ResponseBody ReturnJson delete(Integer id, ModelMap m) {
+//		service.delete(id);
+//		return new ReturnJson();
+//	}
 	
 }

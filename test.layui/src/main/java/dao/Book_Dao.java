@@ -42,6 +42,6 @@ public interface Book_Dao {
 	
 	// É¾³ý
 	@Delete("delete from book where id = #{id}")
-	public void delete(Book b);
+	public void delete(@Param("id") Integer id);
 	
 }
