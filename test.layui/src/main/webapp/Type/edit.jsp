@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="../layui/css/layui.css" rel="stylesheet">
-<script type="text/javascript" src="../layui/layui.all.js"></script>
+<link href="../lib/layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="../lib/layui/layui.all.js"></script>
 <script src="../js/jquery-2.2.4.min.js" ></script>
 <script type="text/javascript" src="../js/my.js"></script>
 
