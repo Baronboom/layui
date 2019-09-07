@@ -25,9 +25,14 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+
+	<!--自增索引 -->
+	<script type="text/html" id="zizeng">
+		{{d.LAY_TABLE_INDEX+1}}
+	</script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
     <div class="layui-input-inline">
@@ -54,6 +59,13 @@
 				,
 				cols : [ [ //表头
 				{
+					field : 'zizeng',
+					title : '编号',
+					width : 80,
+					sort : true,
+					fixed : 'left',
+					type:'numbers'
+				},{
 					field : 'id',
 					title : 'ID',
 					width : 80,
