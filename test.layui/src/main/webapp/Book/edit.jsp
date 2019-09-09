@@ -57,10 +57,12 @@
 
 var id="${param.id}";
 function init(){
-	$.post("edit.action",{id:id}, function(json) {
+	 /* s */
+	$.post("edit",{id:id}, function(json) {
 		render('myform', json);
-		getarray("getSexs.action",{},"[name=sex]",json.sex);
-		getlist("getTypes.action",{},"[name=typeid]",json.typeid);
+		 /* s */
+		getarray("getSexs",{},"[name=sex]",json.sex);
+		getlist("getTypes",{},"[name=typeid]",json.typeid);
 	},"json");
 	
 }
@@ -69,7 +71,8 @@ if(id.length>0){
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 $.post("update.action", data.field, function(json) {
+			  /* s */
+			  $.post("update", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
@@ -78,13 +81,15 @@ if(id.length>0){
 			  });
 	});
 }else{
-	getarray("getSexs.action",{},"[name=sex]",0);
-	getlist("getTypes.action",{},"[name=typeid]",0);
+	 /* s */
+	getarray("getSexs",{},"[name=sex]",0);
+	getlist("getTypes",{},"[name=typeid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 $.post("insert.action", data.field, function(json) {
+			 /* s */
+			  $.post("insert", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");

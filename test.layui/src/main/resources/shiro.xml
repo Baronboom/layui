@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 授权 认证 -->
+    <bean id="jdbcRealm"  class="controller.UserRealm"></bean>
+    <!-- Shiro安全管理器 -->
+    <bean id="securityManager"  class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm"  ref="jdbcRealm"></property>
+    </bean>
+    
+    <!-- id=shiroFilter要与web.xml里的过滤器名字一致 -->
+    <bean id="shiroFilter"  class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager"  ref="securityManager"></property>
+        <property name="loginUrl"  value="/login.html"></property>
+        <property name="successUrl"  value="/index.html"></property>
+        <!-- 用户访问未对其授权的资源时，所显示的连接 -->
+        <property name="unauthorizedUrl"  value="/unauthorizedUrl"></property>
+       
+       
+        <!-- 这是对路径的一个判断，只要不在这里写的，默认都通过/*/**=authc -->
+        <property name="filterChainDefinitions">
+            <value>
+            	/login=anon
+                /index.html=authc
+            </value>
+        </property>
+    </bean>
+    
+	
+	<!-- 使用shiro框架提供的切面类，用于创建代理对象 -->
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"></bean>
+	
+
+</beans>

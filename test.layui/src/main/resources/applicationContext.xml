@@ -32,11 +32,26 @@
         <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    	            <!-- 开启shiro的注解支持 -->
+	<bean id="defaultAdvisorAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<!-- 必须改为true，即使用cglib方式为Action创建代理对象。默认值为false，使用JDK创建代理对象，会造成问题 -->
+		<property name="proxyTargetClass" value="true"></property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">/mg/unauthorized</prop>
+			</props>
+		</property>
+	</bean>
+    
 <!-- 扫描实现类的包 -->
     <context:component-scan base-package="controller"></context:component-scan>
 	<context:component-scan base-package="service.Impl"></context:component-scan>
 	<context:component-scan base-package="dao"></context:component-scan>
     <!-- 加载其他的配置 -->
     <import resource="classpath:applicationContext-dao.xml"/>
-
+	<import resource="classpath:shiro.xml" />
 </beans>

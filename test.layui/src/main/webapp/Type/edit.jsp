@@ -61,7 +61,8 @@
 
 var id="${param.id}";
 function init(){
-	$.post("edit.action",{id:id}, function(json) {
+	 /* s */
+	$.post("edit",{id:id}, function(json) {
 		render('myform', json);
 	},"json");
 	
@@ -71,7 +72,8 @@ if(id.length>0){
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 $.post("update.action", data.field, function(json) {
+			  /* s */
+			  $.post("update", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
@@ -84,7 +86,8 @@ if(id.length>0){
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 $.post("insert.action", data.field, function(json) {
+			  /* s */
+			  $.post("insert", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");

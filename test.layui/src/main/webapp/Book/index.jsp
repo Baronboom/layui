@@ -53,7 +53,7 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'index.action' //数据接口
+				url : 'index' //数据接口  /* s */
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
@@ -110,7 +110,8 @@
 				if (obj.event === 'del') { ///lay-event 属性
 
 					myconfirm("刪除？", function() { // 删除
-						$.post("delete.action", {
+						 /* s */
+						$.post("delete", {
 							id : data.id
 						}, function(json) {
 							/* reload('demo'); */
