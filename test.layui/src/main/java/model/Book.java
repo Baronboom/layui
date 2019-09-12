@@ -7,7 +7,12 @@ public class Book {
 		return sexs[sex];
 	}
 
+	private int id;
+	private String name;
+	private int sex;
+	private int typeid;
 	private String typename;
+	
 	public String getTypename() {
 		return typename;
 	}
@@ -15,45 +20,21 @@ public class Book {
 		this.typename = typename;
 	}
 	
-	
-	private int id;
-	private String name;
-	private int sex;
-
-	private int typeid;
-	
-	
-
-
-	public Book() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	public Book(String name) {
-		super();
-		this.name = name;
-	}
-
 	public int getTypeid() {
 		return typeid;
 	}
-
 
 	public void setTypeid(int typeid) {
 		this.typeid = typeid;
 	}
 
-
 	public int getSex() {
 		return sex;
 	}
 
-
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-
 
 	public int getId() {
 		return id;
@@ -68,5 +49,12 @@ public class Book {
 		this.name = name;
 	}
 	
-	
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+	public Book(String name) {
+		super();
+		this.name = name;
+	}
+
 }

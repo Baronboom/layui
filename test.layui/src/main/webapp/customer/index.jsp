@@ -67,16 +67,20 @@
 					fixed : 'left',
 					type:'numbers'
 				}, {
-					field : 'name',
-					title : '用户名',
+					field : 'csrname',
+					title : '客户名',
+					width : 190
+				},{
+					field : 'csrtel',
+					title : '客户电话',
 					width : 280
 				}, {
-					field : 'sexname',
-					title : '性别',
+					field : 'csrsta',
+					title : '客户状态',
 					width : 180
 				}, {
-					field : 'typename',
-					title : '类型',
+					field : 'sellname',
+					title : '销售员',
 					width : 180
 				}, {
 					fixed : 'right',

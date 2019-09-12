@@ -65,12 +65,6 @@
 					sort : true,
 					fixed : 'left',
 					type:'numbers'
-				},{
-					field : 'id',
-					title : 'ID',
-					width : 80,
-					sort : true,
-					fixed : 'right'
 				}, {
 					field : 'name',
 					title : '类型',
