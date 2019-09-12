@@ -38,7 +38,7 @@ public class UserController {
 			SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(), u.getPass()));
 		} catch (AccountException e) {
 			System.out.println("ณ๖ดํมห");
-			return "redirect:/login.html";
+			return "{\"info\":\"login.html\"}";
 		}
 		return "{\"info\":\"index.html\"}";
 	}
