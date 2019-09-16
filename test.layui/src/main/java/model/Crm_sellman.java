@@ -4,22 +4,36 @@ package model;
 public class Crm_sellman {
 
 	private Integer id;
-	private String sellname;
+	private String name;
 	private Integer depid;
-	public Integer getId() {
-		return id;
+	
+	private String depname;
+	public String getDepname() {
+		return depname;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getSellname() {
-		return sellname;
+	public void setDepname(String depname) {
+		this.depname = depname;
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setSellname(String sellname) {
-		this.sellname = sellname;
+	public void setIrd(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getDepid() {

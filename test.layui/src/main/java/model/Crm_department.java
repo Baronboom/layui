@@ -3,7 +3,7 @@ package model;
 public class Crm_department {
 
 	private Integer id;
-	private String depname;
+	private String name;
 	public Integer getId() {
 		return id;
 	}
@@ -12,12 +12,12 @@ public class Crm_department {
 		this.id = id;
 	}
 
-	public String getDepname() {
-		return depname;
+	public String getName() {
+		return name;
 	}
 
-	public void setDepname(String depname) {
-		this.depname = depname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

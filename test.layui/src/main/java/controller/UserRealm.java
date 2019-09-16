@@ -62,7 +62,6 @@ public class UserRealm extends AuthorizingRealm {
         {
             throw new  AccountException("username is not exist");
         }
-        System.out.println("ceshi");
         //SecurityUtils.getSubject().getSession().setTimeout(5000);
         return new  SimpleAuthenticationInfo(arg0,token.getPassword(),token.getUsername());
     }

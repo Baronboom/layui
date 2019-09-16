@@ -15,6 +15,7 @@
 <body>
 <style>
 .layui-input{width:200px;}
+
 </style>
 
 
@@ -24,24 +25,47 @@
 <c:if test="${param.id!=null}">
 <input type="hidden" name="id" > 
 </c:if>
+
+   <div class="layui-form-item">
+    <label class="layui-form-label">客户姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="cmid"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+    </div>
+  </div>
+  
+   <div class="layui-form-item">
+    <label class="layui-form-label">通话内容</label>
+    <div class="layui-input-block">
+      <input type="text" name="info"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+    </div>
+  </div>
+  
   <div class="layui-form-item">
-    <label class="layui-form-label">名称</label>
+    <label class="layui-form-label">客户状态</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
-    </div>
-  </div>
-   <div class="layui-form-item">
-    <label class="layui-form-label">性别</label>
-    <div class="layui-input-block">
-      <select name="sex" >
+      <select name="status" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
-    <label class="layui-form-label">类型</label>
+
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label" for="meeting">通话日期</label>
     <div class="layui-input-block">
-      <select name="typeid" >
-      </select>
+		<input  class="mydate"  name="date" type="date" />
+    </div>
+  </div>
+  
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label" for="meeting">预约时间</label>
+    <div class="layui-input-block">
+		<input  class="mydate"  name="nextdate" type="date" />
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">销售员姓名</label>
+    <div class="layui-input-block">
+      <input type="text" name="smid"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
     </div>
   </div>
   
@@ -59,10 +83,13 @@ var id="${param.id}";
 function init(){
 	 /* s */
 	$.post("edit",{id:id}, function(json) {
+		alert(json.smid);
+		alert(json.cmid);
 		render('myform', json);
 		 /* s */
-		getarray("getSexs",{},"[name=sex]",json.sex);
-		getlist1("getTypes",{},"[name=typeid]",json.typeid);
+	    getarray("getStas",{},"[name=status]",json.status);
+	    getlist("getSellman",{},"[name=smid]",json.smid);
+	    getlist("getCus",{},"[name=cmid]",json.cmid);
 	},"json");
 	
 }
@@ -73,6 +100,7 @@ if(id.length>0){
 		  form.on('submit(demo1)', function(data){
 			  /* s */
 			  $.post("update", data.field, function(json) {
+				  
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
@@ -82,8 +110,9 @@ if(id.length>0){
 	});
 }else{
 	 /* s */
-	getarray("getSexs",{},"[name=sex]",0);
-	getlist("getTypes",{},"[name=typeid]",0);
+	getarray("getStas",{},"[name=status]",0);
+    getlist("getSellman",{},"[name=smid]",0);
+    getlist("getCus",{},"[name=cmid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;

@@ -20,27 +20,22 @@
 
 <form class="layui-form" lay-filter="myform">
 <c:if test="${param.id==null}">
+<!-- <input type="hidden" name="cmd" value="insert"> -->
 </c:if>
 <c:if test="${param.id!=null}">
+<!-- <input type="hidden" name="cmd" value="update">-->
 <input type="hidden" name="id" > 
 </c:if>
   <div class="layui-form-item">
-    <label class="layui-form-label">名称</label>
+    <label class="layui-form-label">姓名</label>
     <div class="layui-input-block">
       <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item">
-    <label class="layui-form-label">性别</label>
+    <label class="layui-form-label">部门</label>
     <div class="layui-input-block">
-      <select name="sex" >
-      </select>
-    </div>
-  </div>
-   <div class="layui-form-item">
-    <label class="layui-form-label">类型</label>
-    <div class="layui-input-block">
-      <select name="typeid" >
+      <select name="depid" >
       </select>
     </div>
   </div>
@@ -54,15 +49,13 @@
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
 
-
 var id="${param.id}";
 function init(){
 	 /* s */
 	$.post("edit",{id:id}, function(json) {
 		render('myform', json);
-		 /* s */
-		getarray("getSexs",{},"[name=sex]",json.sex);
-		getlist1("getTypes",{},"[name=typeid]",json.typeid);
+		
+		getlist("getDeps",{},"[name=depid]",json.depid);
 	},"json");
 	
 }
@@ -81,14 +74,13 @@ if(id.length>0){
 			  });
 	});
 }else{
-	 /* s */
-	getarray("getSexs",{},"[name=sex]",0);
-	getlist("getTypes",{},"[name=typeid]",0);
+	
+	getlist("getDeps",{},"[name=depid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 /* s */
+			  /* s */
 			  $.post("insert", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');

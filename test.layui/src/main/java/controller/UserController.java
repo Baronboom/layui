@@ -31,13 +31,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping("login")
 	public String login(User u, ModelMap m, HttpSession s) {
-		System.out.println(u.getName());
-		System.out.println(u.getPass());
-		System.out.println("dddddddddddddddd");
 		try {
 			SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(), u.getPass()));
 		} catch (AccountException e) {
-			System.out.println("ณ๖ดํมห");
 			return "{\"info\":\"login.html\"}";
 		}
 		return "{\"info\":\"index.html\"}";

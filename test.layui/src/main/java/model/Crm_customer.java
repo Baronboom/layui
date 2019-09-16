@@ -10,10 +10,17 @@ public class Crm_customer {
 	private String sellname;
 	
 	public static String[]stas= {"没戏","考虑中","已完成"};
-	public String getCsrsta() {
+	public String getCsrstaname() {
 		return stas[csrsta];
 	}
-	
+
+	public Integer getCsrsta() {
+		return csrsta;
+	}
+
+	public void setCsrsta(Integer csrsta) {
+		this.csrsta = csrsta;
+	}
 
 	public String getSellname() {
 		return sellname;

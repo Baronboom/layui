@@ -15,6 +15,7 @@
 <body>
 <style>
 .layui-input{width:200px;}
+
 </style>
 
 
@@ -25,9 +26,15 @@
 <input type="hidden" name="id" > 
 </c:if>
   <div class="layui-form-item">
-    <label class="layui-form-label">名称</label>
+    <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="csrname"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+   <label class="layui-form-label">客户电话</label>
+    <div class="layui-input-block">
+      <input type="text" name="csrtel"  autocomplete="off" placeholder="请输入电话" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item">
@@ -38,7 +45,7 @@
     </div>
   </div>
    <div class="layui-form-item">
-    <label class="layui-form-label">管理员名字</label>
+    <label class="layui-form-label">销售员名字</label>
     <div class="layui-input-block">
       <select name="semid" >
       </select>
@@ -59,10 +66,11 @@ var id="${param.id}";
 function init(){
 	 /* s */
 	$.post("edit",{id:id}, function(json) {
+		alert(json.semid);
 		render('myform', json);
 		 /* s */
-		getarray("getSexs",{},"[name=sex]",json.sex);
-		getlist("getTypes",{},"[name=typeid]",json.typeid);
+		getarray("getStas",{},"[name=csrsta]",json.csrsta);
+	    getlist("getSellman",{},"[name=semid]",json.semid);
 	},"json");
 	
 }
@@ -73,6 +81,7 @@ if(id.length>0){
 		  form.on('submit(demo1)', function(data){
 			  /* s */
 			  $.post("update", data.field, function(json) {
+				  
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
