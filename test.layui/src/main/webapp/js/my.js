@@ -55,7 +55,7 @@ function getlist1(url,data,selector,def_id){
 		for(var i=0;i<json.length;i++){
 			var ss="";
 			if(json[i].id==def_id) ss="selected='selected'";
-			s.append($("<option value='"+json[i].id+"' "+ss+" >"+json[i].name+"</option>"))
+			s.append($("<option value='"+json[i].id+"' "+ss+" >"+json[i].csrname+"</option>"))
 		}
 		layui.form.render('select');
 	},"json");

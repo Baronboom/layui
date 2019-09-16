@@ -67,28 +67,28 @@
 					fixed : 'left',
 					type:'numbers'
 				}, {
-					field : 'date',
-					title : '通话日期',
-					width : 120
-				},{
-					field : 'sellname',
-					title : '销售员姓名',
-					width : 140
-				}, {
 					field : 'csrname',
 					title : '客户姓名',
-					width : 140
+					width : 120
 				}, {
 					field : 'info',
 					title : '通话内容',
 					width : 240
 				}, {
+					field : 'csrstaname',
+					title : '客户状态',
+					width : 140
+				}, {
+					field : 'date',
+					title : '通话日期',
+					width : 120
+				}, {
 					field : 'nextdate',
 					title : '预约时间',
 					width : 120
 				}, {
-					field : 'csrstaname',
-					title : '客户状态',
+					field : 'sellname',
+					title : '销售员姓名',
 					width : 140
 				}, {
 					fixed : 'right',

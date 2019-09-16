@@ -29,14 +29,15 @@
    <div class="layui-form-item">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="cmid"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+      <select name="cmid" >
+      </select>
     </div>
   </div>
   
    <div class="layui-form-item">
     <label class="layui-form-label">通话内容</label>
     <div class="layui-input-block">
-      <input type="text" name="info"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+      <input type="text" name="info"  autocomplete="off" placeholder="请输入通话内容" class="layui-input">
     </div>
   </div>
   
@@ -65,7 +66,8 @@
   <div class="layui-form-item">
     <label class="layui-form-label">销售员姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="smid"  autocomplete="off" placeholder="请输入姓名" class="layui-input">
+      <select name="smid" >
+      </select>
     </div>
   </div>
   
@@ -83,13 +85,11 @@ var id="${param.id}";
 function init(){
 	 /* s */
 	$.post("edit",{id:id}, function(json) {
-		alert(json.smid);
-		alert(json.cmid);
 		render('myform', json);
 		 /* s */
 	    getarray("getStas",{},"[name=status]",json.status);
 	    getlist("getSellman",{},"[name=smid]",json.smid);
-	    getlist("getCus",{},"[name=cmid]",json.cmid);
+	    getlist1("getCus",{},"[name=cmid]",json.cmid);
 	},"json");
 	
 }
@@ -112,7 +112,7 @@ if(id.length>0){
 	 /* s */
 	getarray("getStas",{},"[name=status]",0);
     getlist("getSellman",{},"[name=smid]",0);
-    getlist("getCus",{},"[name=cmid]",0);
+    getlist1("getCus",{},"[name=cmid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;
