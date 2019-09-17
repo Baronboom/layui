@@ -3,25 +3,83 @@ package model;
 public class C_client {
 	private Integer id;
 	private String name;
-	private Integer sex;
 	private String tel;
 	private String qq;
 	private String email;
 	private String infos;
+	private String operatorids;
+	private String createdate;
+	private Integer count;
+	private String comments;
+	
+	private Integer clienttypeid;
+	private Integer createoperatorid;
+	private Integer srcid;
+	private String clienttypename;
+	private String createoperatorname;
+	private String srcname;
+	
+	private Integer sex;
+	private Integer status;
 	private Integer linkstatus;
 	private Integer clientstatus;
 	private Integer purposestatus;
 	private Integer assessstatus;
 	private Integer execstatus;
-	private Integer status;
-	private Integer clienttypeid;
-	private String operatorids;
-	private Integer createoperatorid;
-	private String createdate;
-	private Integer srcid;
-	private Integer count;
-	private String comments;
 	
+	public static String[]sexss= {"不限","男","女"};
+	public String getSexss() {
+		return sexss[sex];
+	}
+	public static String[]statuss= {"正常","公共","资料不全","无效"};
+	public String getStatuss() {
+		return statuss[status];
+	}
+	public static String[]linkstatuss= {"未指定","秒挂","未接通","有交流","深入交流"};
+	public String getLinkstatuss() {
+		return linkstatuss[linkstatus];
+	}
+	public static String[]clientstatuss= {"未指定","排斥","推脱","后续","较好"};
+	public String getClientstatuss() {
+		return clientstatuss[clientstatus];
+	}
+	public static String[]purposestatuss= {"未指定","完全没戏","先观察着","较有兴趣","非常有意向","已经确定"};
+	public String getPurposestatuss() {
+		return purposestatuss[purposestatus];
+	}
+	public static String[]assessstatuss= {"未指定","截至","无果","有预约"};
+	public String getAssessstatuss() {
+		return assessstatuss[assessstatus];
+	}
+	public static String[]execstatuss= {"正常","转出","完成"};
+	public String getExecstatuss() {
+		return execstatuss[execstatus];
+	}
+	
+	
+	
+	
+	
+	
+	
+	public String getClienttypename() {
+		return clienttypename;
+	}
+	public void setClienttypename(String clienttypename) {
+		this.clienttypename = clienttypename;
+	}
+	public String getCreateoperatorname() {
+		return createoperatorname;
+	}
+	public void setCreateoperatorname(String createoperatorname) {
+		this.createoperatorname = createoperatorname;
+	}
+	public String getSrcname() {
+		return srcname;
+	}
+	public void setSrcname(String srcname) {
+		this.srcname = srcname;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,22 +8,22 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.C_client;
-import model.C_operator;
 import model.C_order;
-import service.C_order_Service;
+import model.C_orderdetails;
+import model.C_product;
+import service.C_orderdetails_Service;
 import utils.ReturnInfo;
 import utils.ReturnJson;
 
 @Controller
-@RequestMapping("Order")
-public class C_order_Controller {
+@RequestMapping("Orderdetails")
+public class C_orderdetails_Controller {
 	@Autowired
-	C_order_Service service;
+	C_orderdetails_Service service;
 	
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
-		if(txt!=null&&txt.length()>0)txt=" where C_order.id in (select c_order.id from c_order where c_order.clientid in (select id from c_client where name like '%"+txt+"%'))";
+		if(txt!=null&&txt.length()>0)txt=" where C_orderdetails.id in (select C_orderdetails.id from C_orderdetails where C_orderdetails.orderid in (select id from C_order where name like '%"+txt+"%'))";
 		else txt="";
 		//System.out.println("总查询代码：");
 		//System.out.println("select C_order.*,C_client.name clientname,C_operator.name operatorname from (C_order inner join C_client on C_client.id=C_order.clientid) INNER JOIN c_operator ON C_order.operatorid=c_operator.id where C_order.id in (select c_order.id from c_order where id in (select id from c_client where name like '%"+txt+"%'))");
@@ -30,34 +31,29 @@ public class C_order_Controller {
 	}
 	
 	@RequestMapping("insert")
-	public @ResponseBody ReturnJson insert(C_order b){
+	public @ResponseBody ReturnJson insert(C_orderdetails b){
 		service.insert(b);
 		return new ReturnJson();
 	}
 
-	@RequestMapping("getClient")
-	public @ResponseBody List<C_client> getClient(){
-		return service.selectclient();
+	@RequestMapping("getProduct")
+	public @ResponseBody List<C_product> getProduct(){
+		return service.selectproduct();
 	}
 	
-	@RequestMapping("getOperator")
-	public @ResponseBody List<C_operator> getOperator(){
-		return service.selectoperator();
-	}
-
-	@RequestMapping("getStas")
-	public @ResponseBody String[] getStas() {
-		return C_order.statuss;
+	@RequestMapping("getOrder")
+	public @ResponseBody List<C_order> getOrder(){
+		return service.selectorder();
 	}
 	
 	// 修改
 	@RequestMapping("edit")
-	public @ResponseBody C_order edit(Integer id){
+	public @ResponseBody C_orderdetails edit(Integer id){
 		return 	service.selectByid(id);
 	}
 	
 	@RequestMapping("update")
-	public @ResponseBody ReturnJson update(C_order b){
+	public @ResponseBody ReturnJson update(C_orderdetails b){
 		service.update(b);
 		return new ReturnJson();
 	}

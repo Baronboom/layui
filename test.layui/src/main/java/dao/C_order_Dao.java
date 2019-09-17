@@ -17,7 +17,7 @@ import model.C_order;
 public interface C_order_Dao {
 	
 	// ≤È—Ø
-	@Select("select count(1) from C_order")
+	@Select("select count(1) from (C_order inner join C_client on C_client.id=C_order.clientid) INNER JOIN c_operator ON C_order.operatorid=c_operator.id ${where}")
 	public int selectcount(@Param("where") String where);
 	
 	// ≤È—ØC_order
@@ -35,10 +35,11 @@ public interface C_order_Dao {
 	@Delete("delete from C_order where id=#{id}")
 	public void delete(Integer id);
 
-	 @Insert("insert into C_order (clientid,createdate,compdate,orderdate,startdate,enddate,operatorid,info,files,compoperatorids,compweight,status,amount,comments) values(#{clientid},#{createdate},#{compdate},#{orderdate},#{startdate},#{enddate},#{operatorid},#{info},#{files},#{compoperatorids},#{compweight},#{status},#{amount},#{comments})")
+	 @Insert("insert into C_order (name,clientid,createdate,compdate,orderdate,startdate,enddate,operatorid,info,files,compoperatorids,compweight,status,amount,comments) values(#{name},#{clientid},#{createdate},#{compdate},#{orderdate},#{startdate},#{enddate},#{operatorid},#{info},#{files},#{compoperatorids},#{compweight},#{status},#{amount},#{comments})")
 	 public void insert(C_order t);
 
-	 @Update("update C_order set clientid=#{clientid},createdate=#{createdate},compdate=#{compdate},orderdate=#{orderdate},startdate=#{startdate},enddate=#{enddate},operatorid=#{operatorid},info=#{info},files=#{files},compoperatorids=#{compoperatorids},compweight=#{compweight},status=#{status},amount=#{amount},comments=#{comments} where id=#{id}")
+	 @Update("update C_order set name=#{name},clientid=#{clientid},createdate=#{createdate},compdate=#{compdate},orderdate=#{orderdate},startdate=#{startdate},enddate=#{enddate},operatorid=#{operatorid},info=#{info},files=#{files},compoperatorids=#{compoperatorids},compweight=#{compweight},status=#{status},amount=#{amount},comments=#{comments} where id=#{id}")
 	 public void update(C_order t);
+
 
 }

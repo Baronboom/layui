@@ -2,6 +2,7 @@ package model;
 
 public class C_order {
 	private Integer id;
+	private String name;
 	private String createdate;
 	private String compdate;
 	private String orderdate;
@@ -14,9 +15,12 @@ public class C_order {
 	private double amount;
 	private String comments;
 	
-	
 	private Integer operatorid;
 	private Integer clientid;
+	
+	private String operatorname;
+	private String clientname;
+	
 	private Integer status;
 	
 	public static String[]statuss= {"Î´ÉóºË","ÒÑÉóºË","ÔÝ»ºÒµ¼¨","×÷·Ï"};
@@ -25,9 +29,13 @@ public class C_order {
 		return statuss[status];
 	}
 	
-	private String clientname;
-	private String operatorname;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getClientname() {
 		return clientname;
 	}
