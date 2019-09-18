@@ -27,9 +27,9 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	
+	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>      -->
 	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
@@ -90,13 +90,13 @@
 					field : 'comments',
 					title : '评论',
 					width : 100
-				}, {
+				}/* , {
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 100,
+					width : 120,
 					align : 'center'
-				}
+				} */
 
 				] ],
 				parseData : function(res) {

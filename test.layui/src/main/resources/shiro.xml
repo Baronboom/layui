@@ -21,8 +21,16 @@
         <!-- 这是对路径的一个判断，只要不在这里写的，默认都通过/*/**=authc -->
         <property name="filterChainDefinitions">
             <value>
-            	/login=anon
-                /index.html=authc
+                /login.html=anon
+                /User/login=anon
+            	/css/*=anon
+            	/fonts/*=anon
+            	/images/*=anon
+            	/lib/*=anon
+            	/js/*=anon
+            	/index.html=anon
+            	/*/**=authc
+            	/*=authc
             </value>
         </property>
     </bean>

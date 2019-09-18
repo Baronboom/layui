@@ -27,9 +27,9 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	
-	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>  -->
+	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> -->
 	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> 
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
@@ -67,72 +67,60 @@
 					fixed : 'left',
 					type:'numbers'
 				}, {
-					field : 'name',
-					title : '合同名称',
-					width : 120
-				}, {
 					field : 'clientname',
 					title : '客户姓名',
 					width : 120
 				}, {
-					field : 'createdate',
-					title : '创建日期',
+					field : 'clientstatuss',
+					title : '客户状态',
 					width : 120
 				}, {
-					field : 'compdate',
-					title : '业绩日期',
+					field : 'linkstatuss',
+					title : '电话状态',
+					width : 110
+				}, {
+					field : 'purposestatuss',
+					title : '意向状态',
 					width : 120
 				}, {
-					field : 'orderdate',
-					title : '合同日期',
+					field : 'assessstatuss',
+					title : '评估状态',
 					width : 120
 				}, {
-					field : 'startdate',
-					title : '开始日期',
-					width : 120
-				}, {
-					field : 'enddate',
-					title : '截至日期',
-					width : 120
-				}, {
-					field : 'operatorname',
-					title : '销售人姓名',
-					width : 120
-				}, {
-					field : 'info',
-					title : 'info',
-					width : 120
-				}, {
-					field : 'files',
-					title : 'files',
-					width : 120
-				}, {
-					field : 'compoperatorids',
-					title : 'compoperatorids',
-					width : 120
-				}, {
-					field : 'compweight',
-					title : '权重',
-					width : 120
-				}, {
-					field : 'amount',
-					title : '金额',
+					field : 'execstatuss',
+					title : '处理状态',
 					width : 120
 				}, {
 					field : 'statuss',
-					title : '状态',
+					title : '信息状态',
+					width : 120
+				}, {
+					field : 'askinfo',
+					title : '询问状况',
+					width : 120
+				}, {
+					field : 'followinfo',
+					title : '跟进措施',
+					width : 120
+				}, {
+					field : 'probleminfo',
+					title : '客户顾虑',
 					width : 120
 				}, {
 					field : 'comments',
 					title : 'comments',
 					width : 120
-				}/* , {
+				}, {
+					field : 'createdate',
+					title : '创建时间',
+					width : 120
+				}, {
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
 					width : 120,
 					align : 'center'
-				} */
+				}
 
 				] ],
 				parseData : function(res) {

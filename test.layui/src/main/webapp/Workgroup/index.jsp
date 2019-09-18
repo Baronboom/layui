@@ -7,7 +7,7 @@
 <link href="../lib/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
 <script src="../js/jquery-2.2.4.min.js" ></script>
-<script type="text/javascript" src="../js/my.js"></script>
+<script type="text/javascript" src="../js/mysmall.js"></script>
 <title></title>
 <style type="text/css">
 .input {

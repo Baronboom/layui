@@ -27,9 +27,9 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	
+	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> -->
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
@@ -62,91 +62,91 @@
 				{
 					field : 'zizeng',
 					title : '编号',
-					width : 80,
+					width : 120,
 					sort : true,
 					fixed : 'left',
 					type:'numbers'
 				}, {
 					field : 'name',
 					title : '客户姓名',
-					width : 90
+					width : 120
 				}, {
 					field : 'sexss',
 					title : '性别',
-					width : 90
+					width : 120
 				}, {
 					field : 'tel',
 					title : '电话',
-					width : 100
+					width : 120
 				}, {
 					field : 'qq',
 					title : 'QQ',
-					width : 100
+					width : 120
 				}, {
 					field : 'email',
 					title : '邮箱',
-					width : 100
+					width : 140
 				}, {
 					field : 'infos',
 					title : '额外信息',
-					width : 100
+					width : 120
 				}, {
 					field : 'clientstatuss',
 					title : '客户状态',
-					width : 100
+					width : 120
 				}, {
 					field : 'linkstatuss',
 					title : '电话状态',
-					width : 110
+					width : 120
 				}, {
 					field : 'purposestatuss',
 					title : '意向状态',
-					width : 80
+					width : 120
 				}, {
 					field : 'assessstatuss',
 					title : '评估状态',
-					width : 90
+					width : 120
 				}, {
 					field : 'execstatuss',
 					title : '处理状态',
-					width : 100
+					width : 120
 				}, {
 					field : 'statuss',
 					title : '信息状态',
-					width : 80
+					width : 120
 				}, {
 					field : 'clienttypename',
 					title : '客户类型',
-					width : 80
+					width : 120
 				}, {
 					field : 'createoperatorname',
 					title : '创建人',
-					width : 100
+					width : 120
 				}, {
 					field : 'srcname',
 					title : '信息来源',
-					width : 80
+					width : 120
 				}, {
 					field : 'operatorids',
 					title : 'operatorids',
-					width : 80
+					width : 120
 				}, {
 					field : 'count',
 					title : '回访次数',
-					width : 80
+					width : 120
 				}, {
 					field : 'comments',
 					title : 'comments',
-					width : 80
+					width : 120
 				}, {
 					field : 'createdate',
 					title : '创建时间',
-					width : 80
+					width : 120
 				}, {
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 100,
+					width : 120,
 					align : 'center'
 				}
 

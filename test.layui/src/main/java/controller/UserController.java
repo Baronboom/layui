@@ -18,6 +18,7 @@ import model.User;
 import service.User_Service;
 
 @Controller
+@RequestMapping("User")
 public class UserController {
 	@Autowired
 	User_Service service;
@@ -28,15 +29,16 @@ public class UserController {
 		e.printStackTrace();
 	}
 
-	@ResponseBody
 	@RequestMapping("login")
 	public String login(User u, ModelMap m, HttpSession s) {
 		try {
 			SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(), u.getPass()));
 		} catch (AccountException e) {
-			return "{\"info\":\"login.html\"}";
+			// return "{\"info\":\"login.html\"}";
+			return "redirect:/login.html";
 		}
-		return "{\"info\":\"index.html\"}";
+		// return "{\"info\":\"index.html\"}";
+		return "redirect:/index.html";
 	}
 
 	@RequestMapping("outlogin")

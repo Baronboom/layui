@@ -20,6 +20,10 @@ height: 36px;
 width: 198px;
 border: 1px solid rgba(220,220,220);
 }
+.mystyle{
+display: inline-block;
+position: left;
+}
 </style>
 
 
@@ -30,14 +34,14 @@ border: 1px solid rgba(220,220,220);
 <input type="hidden" name="id" > 
 </c:if>
 
-  <div class="layui-form-item">
+  <div class="layui-form-item mystyle">
     <label class="layui-form-label">合同名称</label>
     <div class="layui-input-block">
       <select name="orderid" >
       </select>
     </div>
   </div>
-  <div class="layui-form-item">
+  <div class="layui-form-item mystyle">
     <label class="layui-form-label">产品名称</label>
     <div class="layui-input-block">
       <select name="productid" >
@@ -45,25 +49,25 @@ border: 1px solid rgba(220,220,220);
     </div>
   </div>
 	
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">数量</label>
     <div class="layui-input-block">
       <input type="text" name="count"  autocomplete="off" placeholder="请输入数量" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">金额</label>
     <div class="layui-input-block">
       <input type="text" name="amount"  autocomplete="off" placeholder="请输入金额" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">折扣</label>
     <div class="layui-input-block">
       <input type="text" name="desc"  autocomplete="off" placeholder="请输入折扣" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">评论</label>
     <div class="layui-input-block">
       <input type="text" name="comments"  autocomplete="off" placeholder="请输入评论" class="layui-input">

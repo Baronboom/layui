@@ -20,6 +20,10 @@ height: 36px;
 width: 198px;
 border: 1px solid rgba(220,220,220);
 }
+.mystyle{
+display: inline-block;
+position: left;
+}
 </style>
 
 
@@ -30,80 +34,80 @@ border: 1px solid rgba(220,220,220);
 <input type="hidden" name="id" > 
 </c:if>
 
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
       <input type="text" name="name"  autocomplete="off" placeholder="请输入客户姓名" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">性别</label>
     <div class="layui-input-block">
       <select name="sex" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
       <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">QQ</label>
     <div class="layui-input-block">
      <input type="text" name="qq"  autocomplete="off" placeholder="请输入客户QQ" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
       <input type="text" name="email"  autocomplete="off" placeholder="请输入客户邮箱" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">额外信息</label>
     <div class="layui-input-block">
       <input type="text" name="infos"  autocomplete="off" placeholder="请输入客户额外信息" class="layui-input">
     </div>
   </div>
   
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户状态</label>
     <div class="layui-input-block">
       <select name="clientstatus" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话状态</label>
     <div class="layui-input-block">
       <select name="linkstatus" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">意向状态</label>
     <div class="layui-input-block">
       <select name="purposestatus" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">评估状态</label>
     <div class="layui-input-block">
       <select name="assessstatus" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">处理状态</label>
     <div class="layui-input-block">
       <select name="execstatus" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">信息状态</label>
     <div class="layui-input-block">
       <select name="status" >
@@ -111,21 +115,21 @@ border: 1px solid rgba(220,220,220);
     </div>
   </div>
   
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户类型</label>
     <div class="layui-input-block">
       <select name="clienttypeid" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">创建人</label>
     <div class="layui-input-block">
       <select name="createoperatorid" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">信息来源</label>
     <div class="layui-input-block">
       <select name="srcid" >
@@ -133,19 +137,19 @@ border: 1px solid rgba(220,220,220);
     </div>
   </div>
 
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">operatorids</label>
     <div class="layui-input-block">
       <input type="text" name="operatorids"  autocomplete="off" placeholder="请输入operatorids" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">回访次数</label>
     <div class="layui-input-block">
       <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">
       <input type="text" name="comments"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">

@@ -9,7 +9,7 @@ function closeFrame(){
 }
 function openFrame(url,title,area){
 	if(!title) title="編輯";
-	if(!area)area=['680px', '60%'];
+	if(!area)area=['460px', '55%'];
 	layer.open({
 		  type: 2,
 		  title: title,

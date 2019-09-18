@@ -15,6 +15,10 @@
 <body>
 <style>
 .layui-input{width:200px;}
+.mystyle{
+display: inline-block;
+position: left;
+}
 </style>
 
 
@@ -24,39 +28,39 @@
 <c:if test="${param.id!=null}">
 <input type="hidden" name="id" > 
 </c:if>
-  <div class="layui-form-item">
+  <div class="layui-form-item mystyle">
     <label class="layui-form-label">员工名</label>
     <div class="layui-input-block">
       <input type="text" name="name"  autocomplete="off" placeholder="请输入员工名" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">员工密码</label>
     <div class="layui-input-block">
       <input type="text" name="pass"  autocomplete="off" placeholder="请输入密码" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
      <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">工作组名</label>
     <div class="layui-input-block">
       <select name="groupid" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">权限</label>
     <div class="layui-input-block">
       <select name="power" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item">
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
       <select name="status" >

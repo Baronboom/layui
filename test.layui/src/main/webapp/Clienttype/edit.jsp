@@ -8,13 +8,16 @@
 <link href="../lib/layui/css/layui.css" rel="stylesheet">
 <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
 <script src="../js/jquery-2.2.4.min.js" ></script>
-<script type="text/javascript" src="../js/my.js"></script>
+<script type="text/javascript" src="../js/mysmall.js"></script>
 
 <title></title>
 </head>
 <body>
 <style>
 .layui-input{width:200px;}
+.low {
+top:30px;
+}
 </style>
 
 
@@ -27,14 +30,14 @@
 <input type="hidden" name="id" > 
 </c:if>
   <div class="layui-form-item">
-    <label class="layui-form-label">客户类型</label>
-    <div class="layui-input-block">
+    <label class="layui-form-label low">客户类型</label>
+    <div class="layui-input-block low">
       <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
   
    <div class="layui-form-item">
-    <div class="layui-input-block">
+    <div class="layui-input-block low">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
   </div>

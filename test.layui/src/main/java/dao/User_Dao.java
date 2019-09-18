@@ -15,7 +15,7 @@ import model.User;
 public interface User_Dao {
 	
 	// 登录方法
-	@Select("select * from User where name = #{name} and pass = #{pass}")
+	@Select("select * from C_operator where name = #{name} and pass = #{pass}")
 	public User login(User u);
 	
 	// 查询全部
