@@ -15,6 +15,11 @@
 <body>
 <style>
 .layui-input{width:200px;}
+.mydate{
+height: 36px;
+width: 198px;
+border: 1px solid rgba(220,220,220);
+}
 .mystyle{
 display: inline-block;
 position: left;
@@ -28,52 +33,56 @@ position: left;
 <c:if test="${param.id!=null}">
 <input type="hidden" name="id" > 
 </c:if>
+
   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">员工名</label>
+    <label class="layui-form-label">合同名称</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入员工名" class="layui-input">
+       <select name="orderid" disabled="disabled" >
+      </select> 
+   	<!-- <input type="text" name="orderid" disabled="disabled" autocomplete="off" placeholder="请输入合同名称" class="layui-input" > -->
     </div>
   </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">员工密码</label>
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label">产品名称</label>
     <div class="layui-input-block">
-      <input type="text" name="pass"  autocomplete="off" placeholder="请输入密码" class="layui-input">
-    </div>
-  </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">电话</label>
-    <div class="layui-input-block">
-     <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input"> -->
-    <input oninput="inputnum(this)" type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input" maxlength="11">
-    </div>
-  </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">工作组名</label>
-    <div class="layui-input-block">
-      <select name="groupid" >
+	    <select name="productid" disabled="disabled">
       </select>
+    <!-- <input type="text" name="productid" disabled="disabled" autocomplete="off" placeholder="请输入产品名称" class="layui-input" > -->
+    </div>
+  </div>
+	
+   <div class="layui-form-item mystyle">
+    <label class="layui-form-label">数量</label>
+    <div class="layui-input-block">
+      <input type="text" name="count" disabled="disabled" autocomplete="off" placeholder="请输入数量" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
     </div>
   </div>
    <div class="layui-form-item mystyle">
-    <label class="layui-form-label">权限</label>
+    <label class="layui-form-label">金额</label>
     <div class="layui-input-block">
-      <select name="power" >
-      </select>
+      <input type="text" name="amount" disabled="disabled" autocomplete="off" placeholder="请输入金额" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
     </div>
   </div>
    <div class="layui-form-item mystyle">
-    <label class="layui-form-label">状态</label>
+    <label class="layui-form-label">折扣</label>
     <div class="layui-input-block">
-      <select name="status" >
-      </select>
+      <!-- <input type="text" name="desc"  autocomplete="off" placeholder="请输入折扣" class="layui-input"> -->
+    <input type="text" name="desca"disabled="disabled"  autocomplete="off" placeholder="请输入折扣" class="layui-input" oninput="inputnum(this)">
+    </div>
+  </div>
+   <div class="layui-form-item mystyle">
+    <label class="layui-form-label">评论</label>
+    <div class="layui-input-block">
+      <input type="text" name="comments" disabled="disabled" autocomplete="off" placeholder="请输入评论" class="layui-input">
     </div>
   </div>
   
-   <div class="layui-form-item">
+<!--    <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
-  </div>
+  </div> -->
+  
 </form>
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
@@ -86,15 +95,15 @@ function inputnum(obj,val){
     obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
 }
 
+
 var id="${param.id}";
 function init(){
 	 /* s */
-	$.post("edit",{id:id}, function(json) {
+	$.post("edito",{id:id}, function(json) {
 		render('myform', json);
 		 /* s */
-		getarray("getStatus",{},"[name=status]",json.status);
-		getarray("getPower",{},"[name=power]",json.power);
-		getlist1("getWorkgroup",{},"[name=groupid]",json.groupid);
+	    getlist("getProduct",{},"[name=productid]",json.productid);
+	    getlist("getOrder",{},"[name=orderid]",json.orderid);
 	},"json");
 	
 }
@@ -105,6 +114,7 @@ if(id.length>0){
 		  form.on('submit(demo1)', function(data){
 			  /* s */
 			  $.post("update", data.field, function(json) {
+				  
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
@@ -114,9 +124,8 @@ if(id.length>0){
 	});
 }else{
 	 /* s */
-	getarray("getStatus",{},"[name=status]",0);
-	getarray("getPower",{},"[name=power]",0);
-	getlist1("getWorkgroup",{},"[name=groupid]",0);
+    getlist("getProduct",{},"[name=productid]",0);
+    getlist("getOrder",{},"[name=orderid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;

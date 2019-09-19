@@ -127,8 +127,8 @@
 					title : '信息来源',
 					width : 120
 				}, {
-					field : 'operatorids',
-					title : 'operatorids',
+					field : 'operatornames',
+					title : '处理人',
 					width : 120
 				}, {
 					field : 'count',

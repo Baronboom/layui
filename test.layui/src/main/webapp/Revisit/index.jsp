@@ -67,8 +67,16 @@
 					fixed : 'left',
 					type:'numbers'
 				}, {
+					field : 'name',
+					title : '回访名称',
+					width : 120
+				}, {
 					field : 'clientname',
 					title : '客户姓名',
+					width : 120
+				}, {
+					field : 'operatorname',
+					title : '回访人',
 					width : 120
 				}, {
 					field : 'clientstatuss',

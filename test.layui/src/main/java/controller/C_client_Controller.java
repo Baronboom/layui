@@ -1,7 +1,12 @@
 package controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +27,9 @@ public class C_client_Controller {
 	@Autowired
 	C_client_Service service;
 	
+	Date date = new Date();
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
 		if(txt!=null&&txt.length()>0)txt=" where c_client.id in (select id from c_client where name like '%"+txt+"%')";
@@ -33,6 +41,15 @@ public class C_client_Controller {
 	
 	@RequestMapping("insert")
 	public @ResponseBody ReturnJson insert(C_client b){
+		String formatDate=sdf.format(date);
+		// 自动插入当前日期
+		b.setCreatedate(formatDate);
+		
+		Subject currentUser = SecurityUtils.getSubject();
+        Session session = currentUser.getSession();
+        C_operator op = (C_operator) session.getAttribute("C_operator");
+        // 自动插入当前登陆人员
+		b.setCreateoperatorid(op.getId());
 		service.insert(b);
 		return new ReturnJson();
 	}

@@ -11,8 +11,17 @@ public class C_operator {
 	private Integer power;
 	private Integer status;
 	private String groupname;
-	
-	
+
+	public C_operator(String name, String pass) {
+		super();
+		this.name = name;
+		this.pass = pass;
+	}
+
+	public C_operator() {
+		super();
+	}
+
 	public String getGroupname() {
 		return groupname;
 	}

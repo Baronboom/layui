@@ -1,6 +1,11 @@
 package controller;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import model.C_client;
 import model.C_operator;
 import model.C_order;
+import model.C_orderdetails;
+import model.C_product;
 import service.C_order_Service;
 import utils.ReturnInfo;
 import utils.ReturnJson;
@@ -19,6 +26,11 @@ import utils.ReturnJson;
 public class C_order_Controller {
 	@Autowired
 	C_order_Service service;
+	
+	Date date = new Date();
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	//最后一步，利用格式化对象格式化日期对象，返回格式化的时间字符串
+	
 	
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
@@ -31,6 +43,15 @@ public class C_order_Controller {
 	
 	@RequestMapping("insert")
 	public @ResponseBody ReturnJson insert(C_order b){
+		String formatDate=sdf.format(date);
+		// 自动插入当前日期
+		b.setCreatedate(formatDate);
+		
+		Subject currentUser = SecurityUtils.getSubject();
+        Session session = currentUser.getSession();
+        C_operator op = (C_operator) session.getAttribute("C_operator");
+        // 自动插入当前登陆人员
+		b.setOperatorid(op.getId());
 		service.insert(b);
 		return new ReturnJson();
 	}
@@ -51,9 +72,26 @@ public class C_order_Controller {
 	}
 	
 	// 修改
+	// ---------------------------待删
 	@RequestMapping("edit")
 	public @ResponseBody C_order edit(Integer id){
 		return 	service.selectByid(id);
+	}
+	
+	//----------------------------新增
+	@RequestMapping("getOrder")
+	public @ResponseBody List<C_order> getOrder(){
+		return service.selectorder();
+	}
+	
+	@RequestMapping("getProduct")
+	public @ResponseBody List<C_product> getProduct(){
+		return service.selectproduct();
+	}
+	
+	@RequestMapping("edito")
+	public @ResponseBody C_orderdetails edito(Integer id){
+		return 	service.selecotByid(id);
 	}
 	
 	@RequestMapping("update")

@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
 <script src="../js/jquery-2.2.4.min.js" ></script>
 <script type="text/javascript" src="../js/my.js"></script>
-
+<script type="text/javascript" src="../js/tableSelect.js"></script>
 <title></title>
 </head>
 <body>
@@ -50,19 +50,22 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
-      <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input">
+      <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input"> -->
+    <input class="layui-input" name="tel" autocomplete="off" type="text" placeholder="请输入客户电话" oninput="value=value.replace(/[^\d]/g,'')" maxlength=11></input>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">QQ</label>
     <div class="layui-input-block">
-     <input type="text" name="qq"  autocomplete="off" placeholder="请输入客户QQ" class="layui-input">
+     <!-- <input type="text" name="qq"  autocomplete="off" placeholder="请输入客户QQ" class="layui-input"> -->
+     <input type="text" name="qq" class="layui-input" autocomplete="off" placeholder="请输入客户QQ"  oninput="value=value.replace(/[^\d]/g,'')"/>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
-      <input type="text" name="email"  autocomplete="off" placeholder="请输入客户邮箱" class="layui-input">
+      <!-- <input type="text" name="email"  autocomplete="off" placeholder="请输入客户邮箱" class="layui-input"> -->
+   	<input type="email" name="email" autocomplete="off" placeholder="请输入客户邮箱" class="layui-input" />
     </div>
   </div>
    <div class="layui-form-item mystyle">
@@ -122,13 +125,15 @@ position: left;
       </select>
     </div>
   </div>
-   <div class="layui-form-item mystyle">
+  
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">创建人</label>
     <div class="layui-input-block">
       <select name="createoperatorid" >
       </select>
     </div>
-  </div>
+  </div> -->
+  
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">信息来源</label>
     <div class="layui-input-block">
@@ -138,29 +143,32 @@ position: left;
   </div>
 
    <div class="layui-form-item mystyle">
-    <label class="layui-form-label">operatorids</label>
+    <label class="layui-form-label">处理人</label>
     <div class="layui-input-block">
-      <input type="text" name="operatorids"  autocomplete="off" placeholder="请输入operatorids" class="layui-input">
+      <input type="text" name="operatornames"  autocomplete="off" placeholder="请输入处理人" class="layui-input" id="demo">
+   	 <input type="hidden" name="operatorids">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">回访次数</label>
     <div class="layui-input-block">
-      <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">
+      <!-- <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input"> -->
+   <input type="text" name="count" autocomplete="off" placeholder="请输入回访次数" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')"/>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">
-      <input type="text" name="comments"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">
+      <input type="text" name="comments"  autocomplete="off" placeholder="comments" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item mystyle">
+  
+  <!--  <div class="layui-form-item mystyle">
     <label class="layui-form-label" for="meeting">创建时间</label>
     <div class="layui-input-block">
 		<input  class="mydate" id="meeting" name="createdate" type="date" />
     </div>
-  </div>
+  </div> -->
   
    <div class="layui-form-item">
     <div class="layui-input-block">
@@ -232,6 +240,52 @@ if(id.length>0){
 			  });
 	});
 }
+
+
+
+var tableSelect = layui.tableSelect;
+tableSelect.render({
+	elem: '#demo',	//定义输入框input对象 必填
+	checkedKey: 'id', //表格的唯一建值，非常重要，影响到选中状态 必填
+	searchKey: 'txt',	//搜索输入框的name值 默认keyword
+	searchPlaceholder: '关键词搜索',	//搜索输入框的提示文字 默认关键词搜索
+	table: {	//定义表格参数，与LAYUI的TABLE模块一致，只是无需再定义表格elem
+		url:'../Operator/index',
+		cols: [[
+			{type: 'checkbox', fixed: 'left'},
+		{
+			field : 'id',
+			title : 'ID',
+			width : 100,
+		},{
+			field : 'name',
+			title : '用户名',
+			width : 100
+		}]],
+		parseData : function(res) {
+			return {
+				"code" : res.code, //解析接口状态
+				"msg" : res.msg,//解析提示文本
+				"count" : res.count,//解析数据长度
+				"data" : res.list//解析数据列表
+			}
+		} 
+	},
+	done: function (elem, data) {
+	//选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []
+	//拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...
+		var NEWJSON = []
+		var NEWJSON1 = []
+		layui.each(data.data, function (index, item) {
+			NEWJSON.push(item.name)
+			NEWJSON1.push(item.id)
+			})
+		elem.val(NEWJSON.join(","))
+		$("[name=operatorids]").val(NEWJSON1.join(","));
+	}
+	
+	
+})
 
 </script>
 </body>

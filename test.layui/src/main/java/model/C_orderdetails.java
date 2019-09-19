@@ -4,7 +4,7 @@ public class C_orderdetails {
 	private Integer id;
 	private double count;
 	private double amount;
-	private double desc;
+	private double desca;
 	private String comments;
 	
 	private Integer orderid;
@@ -55,11 +55,11 @@ public class C_orderdetails {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public double getDesc() {
-		return desc;
+	public double getDesca() {
+		return desca;
 	}
-	public void setDesc(double desc) {
-		this.desc = desc;
+	public void setDesca(double desca) {
+		this.desca = desca;
 	}
 	public String getComments() {
 		return comments;

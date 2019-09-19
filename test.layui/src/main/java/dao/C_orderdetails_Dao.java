@@ -37,10 +37,10 @@ public interface C_orderdetails_Dao {
 	@Delete("delete from C_orderdetails where id=#{id}")
 	public void delete(Integer id);
 
-	 @Insert("insert into C_orderdetails (orderid,productid,count,amount,desc,comments) values(#{orderid},#{productid},#{count},#{amount},#{desc},#{comments})")
+	 @Insert("insert into C_orderdetails (orderid,productid,count,amount,desca,comments) values(#{orderid},#{productid},#{count},#{amount},#{desca},#{comments})")
 	 public void insert(C_orderdetails t);
 
-	 @Update("update C_orderdetails set orderid=#{orderid},productid=#{productid},count=#{count},amount=#{amount},desc=#{desc},comments=#{comments} where id=#{id}")
+	 @Update("update C_orderdetails set orderid=#{orderid},productid=#{productid},count=#{count},amount=#{amount},desca=#{desca},comments=#{comments} where id=#{id}")
 	 public void update(C_orderdetails t);
 
 }

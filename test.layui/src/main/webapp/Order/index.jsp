@@ -30,6 +30,7 @@
 	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>  -->
 	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">合同明细</a>
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
@@ -107,8 +108,8 @@
 					title : 'files',
 					width : 120
 				}, {
-					field : 'compoperatorids',
-					title : 'compoperatorids',
+					field : 'compoperatornames',
+					title : '业绩人员',
 					width : 120
 				}, {
 					field : 'compweight',
@@ -126,13 +127,13 @@
 					field : 'comments',
 					title : 'comments',
 					width : 120
-				}/* , {
+				} , {
 					fixed : 'right',
-					title : '操作',
+					title : '查看',
 					toolbar : '#barDemo',
-					width : 120,
+					width : 100,
 					align : 'center'
-				} */
+				} 
 
 				] ],
 				parseData : function(res) {
@@ -162,7 +163,7 @@
 						}, "json");
 					});
 				} else {
-					openFrame('edit.jsp?id=' + data.id); // 修改
+					openFrame('orderdetails.jsp?id=' + data.id); // 修改
 				}
 			});
 

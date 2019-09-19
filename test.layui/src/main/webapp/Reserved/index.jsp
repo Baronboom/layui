@@ -27,24 +27,21 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	
-	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>      -->
+	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> -->
 	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
 		{{d.LAY_TABLE_INDEX+1}}
 	</script>
-	
-	
-	<!-- 
-	<div class="layui-input-inline">
-      	<input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入合同名称" class="layui-input input">
-    </div>
-	<button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
-	<button class="layui-btn layui-btn-sm" lay-event="search">查询</button> -->
 	<script type="text/html" id="toolbarDemo">
 	   <div class="layui-btn-container">
+     	  <div class="layui-input-inline">
+      	  <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入客户姓名" class="layui-input input">
+     	  </div>
+    	  <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
     	  <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
   	  </div>
 	</script>
@@ -63,44 +60,60 @@
 				page : true //开启分页
 				,
 				cols : [ [ //表头
-				/* {
+				{
 					field : 'zizeng',
 					title : '编号',
-					width : 80,
+					width : 120,
 					sort : true,
 					fixed : 'left',
 					type:'numbers'
+				}/* , {
+					field : 'revisitname',
+					title : '回访名称',
+					width : 120
+				} */, {
+					field : 'clientname',
+					title : '客户姓名',
+					width : 120
 				}, {
-					field : 'ordername',
-					title : '合同名称',
-					width : 90
+					field : 'operatorname',
+					title : '创建人',
+					width : 120
 				}, {
-					field : 'productname',
-					title : '产品名称',
-					width : 90
+					field : 'createdate',
+					title : '创建时间',
+					width : 120
 				}, {
-					field : 'count',
-					title : '数量',
-					width : 100
+					field : 'date',
+					title : '预约时间',
+					width : 140
 				}, {
-					field : 'amount',
-					title : '金额',
-					width : 100
+					field : 'execoperatorname',
+					title : '预约处理人',
+					width : 120
 				}, {
-					field : 'desc',
-					title : '折扣',
-					width : 100
+					field : 'types',
+					title : '类型',
+					width : 120
 				}, {
-					field : 'comments',
-					title : '评论',
-					width : 100
-				} *//* , {
+					field : 'statuss',
+					title : '状态',
+					width : 120
+				}, {
+					field : 'execstatsus',
+					title : '执行状态',
+					width : 120
+				}, {
+					field : 'result',
+					title : '结果',
+					width : 120
+				}, {
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
 					width : 120,
 					align : 'center'
-				} */
+				}
 
 				] ],
 				parseData : function(res) {

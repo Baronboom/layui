@@ -14,6 +14,7 @@ public class C_order {
 	private String compweight;
 	private double amount;
 	private String comments;
+	private String compoperatornames;
 	
 	private Integer operatorid;
 	private Integer clientid;
@@ -29,6 +30,14 @@ public class C_order {
 		return statuss[status];
 	}
 	
+	
+	public String getCompoperatornames() {
+		return compoperatornames;
+	}
+
+	public void setCompoperatornames(String compoperatornames) {
+		this.compoperatornames = compoperatornames;
+	}
 	
 	public String getName() {
 		return name;

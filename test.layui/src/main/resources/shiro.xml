@@ -22,7 +22,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /login.html=anon
-                /User/login=anon
+                /Operator/login=anon
             	/css/*=anon
             	/fonts/*=anon
             	/images/*=anon

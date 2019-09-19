@@ -35,9 +35,24 @@ position: left;
 </c:if>
   
    <div class="layui-form-item mystyle">
+    <label class="layui-form-label">回访名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name"  autocomplete="off" placeholder="请输入回访名称" class="layui-input">
+    </div>
+  </div>
+  
+   <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
       <select name="clientid" >
+      </select>
+    </div>
+  </div>
+  
+   <div class="layui-form-item mystyle">
+    <label class="layui-form-label">回访人</label>
+    <div class="layui-input-block">
+      <select name="operatorid" >
       </select>
     </div>
   </div>
@@ -140,6 +155,7 @@ function init(){
 		getarray("getAssessstatus",{},"[name=assessstatus]",json.assessstatus);
 		getarray("getExecstatus",{},"[name=execstatus]",json.execstatus);
 	    getlist("getClient",{},"[name=clientid]",json.clientid);
+	    getlist("getOperator",{},"[name=operatorid]",json.operatorid);
 	},"json");
 	
 }
@@ -167,6 +183,7 @@ if(id.length>0){
 	getarray("getAssessstatus",{},"[name=assessstatus]",0);
 	getarray("getExecstatus",{},"[name=execstatus]",0);
     getlist("getClient",{},"[name=clientid]",0);
+    getlist("getOperator",{},"[name=operatorid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;

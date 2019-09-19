@@ -13,18 +13,24 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.C_operator;
 import model.User;
+import service.C_operator_Service;
 import service.User_Service;
 
 public class UserRealm extends AuthorizingRealm {
 	
+//	@Autowired
+//	User_Service service;
 	@Autowired
-	User_Service service;
+	C_operator_Service service;
 	
     protected Logger logger =  LoggerFactory.getLogger(this.getClass());  
     
@@ -57,8 +63,15 @@ public class UserRealm extends AuthorizingRealm {
         //String username = token.getUsername();
         // 根据username从数据库查找用户，得到密码
         // 假设找到的用户如下
-         User user =  service.login(new User(token.getUsername(),new String(token.getPassword())));
-        if (null == user)
+    //User user =  service.login(new User(token.getUsername(),new String(token.getPassword())));
+    C_operator user =  service.login(new C_operator(token.getUsername(),new String(token.getPassword())));
+        
+    Subject currentUser = SecurityUtils.getSubject();
+    Session session = currentUser.getSession();
+    session.touch();
+    session.setAttribute("C_operator",user);
+    
+    if (null == user)
         {
             throw new  AccountException("username is not exist");
         }

@@ -10,9 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import model.C_operator;
 import model.C_workgroup;
+import model.User;
 
 @Repository
 public interface C_operator_Dao {
+	
+	@Select("select * from C_operator where name = #{name} and pass = #{pass}")
+	public C_operator login(C_operator u);
 
 	// ≤È—Ø
 	@Select("select count(1) from C_operator inner join C_workgroup on C_workgroup.id=C_operator.groupid ${where}")

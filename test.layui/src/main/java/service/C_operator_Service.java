@@ -4,9 +4,12 @@ import java.util.List;
 
 import model.C_operator;
 import model.C_workgroup;
+import model.User;
 import utils.ReturnInfo;
 
 public interface C_operator_Service {
+	
+	public C_operator login(C_operator u);
 	
 	// ²éÑ¯×ÜµÄ
 	public ReturnInfo select(String where,Integer page,Integer max);
@@ -25,4 +28,5 @@ public interface C_operator_Service {
 	
 	// É¾³ý
 	public void delete(Integer b);
+
 }

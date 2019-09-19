@@ -27,7 +27,7 @@ public class BookController {
 		e.printStackTrace();
 	}
 	
-	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回
+	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回。
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
 		if(txt!=null&&txt.length()>0)txt=" where book.name like '%"+txt+"%'";
@@ -63,7 +63,7 @@ public class BookController {
 		return service.selectType();
 	}
 
-	// 删除
+	// 删除.
 //	@RequestMapping("delete")
 //	public @ResponseBody String delete(Book b, ModelMap m) {
 //		service.delete(b);

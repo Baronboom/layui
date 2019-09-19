@@ -2,6 +2,11 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.C_operator;
 import model.C_workgroup;
+import model.User;
 import service.C_operator_Service;
 import utils.ReturnInfo;
 import utils.ReturnJson;
@@ -25,6 +31,18 @@ public class C_operator_Controller {
 	@ExceptionHandler
 	public void ex(Exception e) {
 		e.printStackTrace();
+	}
+	
+	@RequestMapping("login")
+	public String login(C_operator u, ModelMap m, HttpSession s) {
+		try {
+			SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(), u.getPass()));
+		} catch (AccountException e) {
+			// return "{\"info\":\"login.html\"}";
+			return "redirect:/login.html";
+		}
+		// return "{\"info\":\"index.html\"}";
+		return "redirect:/index.html";
 	}
 	
 	// 查询   @ResponseBody 自动调用jakson，自动生成json语句返回

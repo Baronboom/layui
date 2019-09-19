@@ -43,4 +43,8 @@ public class C_operator_Service_Impl implements C_operator_Service{
 		return dao.selectWorkgroup();
 	}
 
+	public C_operator login(C_operator u) {
+		return dao.login(u);
+	}
+
 }

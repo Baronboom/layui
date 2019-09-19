@@ -18,6 +18,7 @@ public class C_client {
 	private String clienttypename;
 	private String createoperatorname;
 	private String srcname;
+	private String operatornames;
 	
 	private Integer sex;
 	private Integer status;
@@ -60,7 +61,13 @@ public class C_client {
 	
 	
 	
-	
+	public String getOperatornames() {
+		return operatornames;
+	}
+
+	public void setOperatornames(String operatornames) {
+		this.operatornames = operatornames;
+	}
 	
 	public String getClienttypename() {
 		return clienttypename;

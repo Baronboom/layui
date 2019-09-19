@@ -15,9 +15,19 @@
 <body>
 <style>
 .layui-input{width:200px;}
+.mydate{
+height: 36px;
+width: 198px;
+border: 1px solid rgba(220,220,220);
+}
 .mystyle{
 display: inline-block;
 position: left;
+}
+.mydate{
+height: 36px;
+width: 198px;
+border: 1px solid rgba(220,220,220);
 }
 </style>
 
@@ -28,44 +38,64 @@ position: left;
 <c:if test="${param.id!=null}">
 <input type="hidden" name="id" > 
 </c:if>
+
+   <div class="layui-form-item mystyle">
+    <label class="layui-form-label">客户姓名</label>
+    <div class="layui-input-block">
+     <select name="clientid" >
+      </select>
+    </div>
+  </div>
+   <div class="layui-form-item mystyle">
+    <label class="layui-form-label">回访名称</label>
+    <div class="layui-input-block">
+     <select name="revisitid" >
+      </select>
+    </div>
+  </div>
+  
   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">员工名</label>
+    <label class="layui-form-label" for="meeting">预约时间</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入员工名" class="layui-input">
+		<input  class="mydate" id="meeting" name="date" type="date" />
     </div>
   </div>
+  
+  
    <div class="layui-form-item mystyle">
-    <label class="layui-form-label">员工密码</label>
+    <label class="layui-form-label">预约处理人</label>
     <div class="layui-input-block">
-      <input type="text" name="pass"  autocomplete="off" placeholder="请输入密码" class="layui-input">
-    </div>
-  </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">电话</label>
-    <div class="layui-input-block">
-     <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input"> -->
-    <input oninput="inputnum(this)" type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input" maxlength="11">
-    </div>
-  </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">工作组名</label>
-    <div class="layui-input-block">
-      <select name="groupid" >
+     <select name="execoperatorid" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item mystyle">
-    <label class="layui-form-label">权限</label>
+  
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label">类型</label>
     <div class="layui-input-block">
-      <select name="power" >
+      <select name="type" >
       </select>
     </div>
   </div>
-   <div class="layui-form-item mystyle">
+  <div class="layui-form-item mystyle">
     <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
       <select name="status" >
       </select>
+    </div>
+  </div>
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label">执行状态</label>
+    <div class="layui-input-block">
+      <select name="execstatsu" >
+      </select>
+    </div>
+  </div>
+  
+  <div class="layui-form-item mystyle">
+    <label class="layui-form-label">结果</label>
+    <div class="layui-input-block">
+       <input type="text" name="result"  autocomplete="off" placeholder="请输入result" class="layui-input">
     </div>
   </div>
   
@@ -78,13 +108,6 @@ position: left;
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
 
-function inputnum(obj,val){
-    obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
-    obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字
-    obj.value = obj.value.replace(/\.{2,}/g,""); //只保留第一个, 清除多余的
-    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
-    obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
-}
 
 var id="${param.id}";
 function init(){
@@ -92,9 +115,13 @@ function init(){
 	$.post("edit",{id:id}, function(json) {
 		render('myform', json);
 		 /* s */
-		getarray("getStatus",{},"[name=status]",json.status);
-		getarray("getPower",{},"[name=power]",json.power);
-		getlist1("getWorkgroup",{},"[name=groupid]",json.groupid);
+	    getarray("getStas",{},"[name=status]",json.status);
+		getarray("getTypes",{},"[name=type]",json.type);
+		getarray("getExecstatsus",{},"[name=execstatsu]",json.execstatsu);
+		
+	    getlist("getClient",{},"[name=clientid]",json.clientid);
+	    getlist("getRevisit",{},"[name=revisitid]",json.revisitid);
+	    getlist("getExecoperator",{},"[name=execoperatorid]",json.execoperatorid);
 	},"json");
 	
 }
@@ -105,6 +132,7 @@ if(id.length>0){
 		  form.on('submit(demo1)', function(data){
 			  /* s */
 			  $.post("update", data.field, function(json) {
+				  
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
@@ -114,9 +142,13 @@ if(id.length>0){
 	});
 }else{
 	 /* s */
-	getarray("getStatus",{},"[name=status]",0);
-	getarray("getPower",{},"[name=power]",0);
-	getlist1("getWorkgroup",{},"[name=groupid]",0);
+	getarray("getStas",{},"[name=status]",0);
+	getarray("getTypes",{},"[name=type]",0);
+	getarray("getExecstatsus",{},"[name=execstatsu]",0);
+	
+	 getlist("getClient",{},"[name=clientid]",0);
+	 getlist("getRevisit",{},"[name=revisitid]",0);
+	 getlist("getExecoperator",{},"[name=execoperatorid]",0);
 	
 	layui.use('form', function(){
 		  var form = layui.form;

@@ -35,7 +35,9 @@
   <div class="layui-form-item">
     <label class="layui-form-label">金额</label>
     <div class="layui-input-block">
-      <input type="text" name="amount"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <!-- <input type="text" name="amount"  autocomplete="off" placeholder="请输入标题" class="layui-input"> -->
+      <!-- <input type="text" name="amount" class="inp" value="0" onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (!/^[\d]+$/ig.test(this.value)){this.value='';}}"/> -->
+     <input type="text" class="layui-input" placeholder="请输入金额" name="amount" oninput="inputnum(this)">
     </div>
   </div>
   <div class="layui-form-item">
@@ -54,6 +56,13 @@
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
 
+function inputnum(obj,val){
+    obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+    obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字
+    obj.value = obj.value.replace(/\.{2,}/g,""); //只保留第一个, 清除多余的
+    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+    obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+}
 
 var id="${param.id}";
 function init(){

@@ -9,6 +9,8 @@ import dao.C_order_Dao;
 import model.C_client;
 import model.C_operator;
 import model.C_order;
+import model.C_orderdetails;
+import model.C_product;
 import service.C_order_Service;
 import utils.ReturnInfo;
 
@@ -30,6 +32,10 @@ public class C_order_Service_Impl implements C_order_Service{
 		return (C_order)dao.select(" where C_order.id="+id," limit 1").get(0);
 	}
 
+	public C_orderdetails selecotByid(Integer id) {
+		return (C_orderdetails)dao.selecto(" where c_orderdetails.orderid="+id," limit 1").get(0);
+	}
+	
 	public List<C_operator> selectoperator() {
 		return dao.selectoperator();
 	}
@@ -48,6 +54,13 @@ public class C_order_Service_Impl implements C_order_Service{
 
 	public void delete(Integer b) {
 		dao.delete(b);
+	}
+	public List<C_order> selectorder() {
+		return dao.selectorder();
+	}
+	
+	public List<C_product> selectproduct() {
+		return dao.selectproduct();
 	}
 
 }

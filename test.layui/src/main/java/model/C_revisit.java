@@ -7,7 +7,9 @@ public class C_revisit {
 	private String followinfo;
 	private String probleminfo;
 	private String comments;
-
+	private String name;
+	
+	private Integer operatorid;
 	private Integer clientid;
 	private Integer status;
 	private Integer linkstatus;
@@ -17,8 +19,9 @@ public class C_revisit {
 	private Integer execstatus;
 	
 	private String clientname;
+	private String operatorname;
 	
-	
+
 	public static String[]statuss= {"е§ГЃ","вўВи"};
 	public String getStatuss() {
 		return statuss[status];
@@ -44,7 +47,27 @@ public class C_revisit {
 		return execstatuss[execstatus];
 	}
 	
+	public String getOperatorname() {
+		return operatorname;
+	}
+
+	public void setOperatorname(String operatorname) {
+		this.operatorname = operatorname;
+	}
 	
+	public Integer getOperatorid() {
+		return operatorid;
+	}
+
+	public void setOperatorid(Integer operatorid) {
+		this.operatorid = operatorid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getClientname() {
 		return clientname;
 	}
