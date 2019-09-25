@@ -9,6 +9,7 @@ import dao.C_revisit_Dao;
 import model.C_client;
 import model.C_operator;
 import model.C_revisit;
+import model.Status;
 import service.C_revisit_Service;
 import utils.ReturnInfo;
 
@@ -47,5 +48,9 @@ public class C_revisit_Service_Impl implements C_revisit_Service{
 	
 	public List<C_operator> selectoperator() {
 		return dao.selectoperator();
+	}
+
+	public void updatec(Status b) {
+		dao.updatec(b);
 	}
 }

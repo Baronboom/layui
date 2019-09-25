@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <link href="../lib/layui/css/layui.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/font.css">
+<link rel="stylesheet" href="../css/xadmin.css">
 <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
+<script type="text/javascript" src="../js/xadmin.js"></script>
 <script src="../js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="../js/my.js"></script>
+<script type="text/javascript" src="../js/tableSelect.js"></script>
+
 <title></title>
 <style type="text/css">
 .input {
@@ -27,14 +32,18 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	
+	<!-- 行内按钮 barDemo -->
 	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> -->
 	<script type="text/html" id="barDemo">
 		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="fenpei">分配</a>
 	</script>
 		<!--自增索引 -->
 	<script type="text/html" id="zizeng">
 		{{d.LAY_TABLE_INDEX+1}}
 	</script>
+	
+	<!-- 头部工具栏 toolbarDemo -->
 	<script type="text/html" id="toolbarDemo">
 	   <div class="layui-btn-container">
      	  <div class="layui-input-inline">
@@ -43,6 +52,7 @@
     	  <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
     	  <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
     	  <button class="layui-btn layui-btn-sm" lay-event="input">批量导入</button>
+    	  <button class="layui-btn layui-btn-sm" lay-event="allocationAll">批量分配</button>
   	  </div>
 	</script>
 
@@ -61,11 +71,17 @@
 				,
 				cols : [ [ //表头
 				{
-					field : 'zizeng',
-					title : '编号',
+					title : 'ID',
 					width : 120,
 					sort : true,
-					fixed : 'left',
+					//fixed : 'left',
+					type:'checkbox'
+				}, {
+					field : 'zizeng',
+					title : '编号',
+					width : 90,
+					sort : true,
+					//fixed : 'left',
 					type:'numbers'
 				}, {
 					field : 'name',
@@ -162,39 +178,92 @@
 				}
 			});
 
+			
+			var ids = [];
+		  	layui.table.on('checkbox(test)', function(obj){
+		 		var id = obj.data.id;
+		 		var t = 1;
+		 		for(var j=0;j<ids.length;j++) {
+		 			if(ids[j] == id) {
+		 				ids.splice(j,1);
+		 				t = 0;
+		 			}
+		 		}
+		 		if(t == 1){
+		 			ids.push(id);
+		 			t = 1;
+		 		}
+		 		
+		 		/* console.log(obj.data.id); //选中行的相关数据
+		 		console.log(obj.checked); //当前是否选中状态
+		 		console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one */
+		 	});
+			
 			//obj 行      obj.data 行数据    data.id 列
 			//test  是table的lay-filter="test" 属性
 			table.on('tool(test)', function(obj) {
 				var data = obj.data;
-				if (obj.event === 'del') { ///lay-event 属性
-
-					myconfirm("刪除？", function() { // 删除
-						 /* s */
+				if (obj.event === 'fenpei') { ///lay-event 属性
+					openFrame('fenpei.jsp?id=' + data.id); // 分配
+					/* myconfirm("刪除？", function() { // 删除
 						$.post("delete", {
 							id : data.id
 						}, function(json) {
-							/* reload('demo'); */
+							//reload('demo'); 
 							obj.del();
 							layer.close(layer.index);
 						}, "json");
-					});
+					}); */
 				} else {
-					openFrame('edit.jsp?id=' + data.id); // 修改
+					openFrame('Unallocatededit.jsp?id=' + data.id); // 修改
 				}
 			});
 
 			table.on('toolbar(test)', function(obj) {
-				if (obj.event === 'search') { // 查询
+				
+				switch(obj.event){
+				
+				case 'search':
+					var txt = $(event.target).prev().find("input").val();
+					reload('demo', {
+						txt : txt
+					});
+					break;
+				case 'add':
+					openFrame("Unallocatededit.jsp"); // 新增
+					break;
+				case 'allocationAll':
+					openFrame('plfenpei.jsp?ids='+ids);
+	      			//xadmin.open('批量分配客户','./table_select.jsp?ids='+ids, 600, 500);
+	      			break;
+				default :
+					openFrame("cc.jsp"); 
+					break;
+				}
+				/* if (obj.event === 'search') { // 查询
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo', {
 						txt : txt
 					});
 				} else if(obj.event === 'add'){
-					openFrame("edit.jsp"); // 新增
+					openFrame("Unallocatededit.jsp"); // 新增
 				} else {
 					openFrame("cc.jsp"); 
-				}
+				} */
+				
+				
 			});
+			
+	        // 监听全选
+	        /* form.on('checkbox(checkall)', function(data){
+
+	          if(data.elem.checked){
+	            $('tbody input').prop('checked',true);
+	          }else{
+	            $('tbody input').prop('checked',false);
+	          }
+	          form.render('checkbox');
+	        });  */
 
 		});
 	</script>

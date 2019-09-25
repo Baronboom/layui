@@ -22,26 +22,30 @@ public class C_revisit {
 	private String operatorname;
 	
 
-	public static String[]statuss= {"正常","隐藏"};
+	public static String[]statuss= {"正常","公共","资料不全","无效"};
 	public String getStatuss() {
 		return statuss[status];
 	}
-	public static String[]linkstatuss= {"秒挂","未接通","有交流","深入交流"};
+	public static String[]linkstatuss= {"未指定","秒挂","未接通","有交流","深入交流"};
 	public String getLinkstatuss() {
 		return linkstatuss[linkstatus];
 	}
-	public static String[]clientstatuss= {"排斥","推脱","后续","较好"};
+	public static String[]clientstatuss= {"未指定","排斥","推脱","后续","较好"};
 	public String getClientstatuss() {
 		return clientstatuss[clientstatus];
 	}
-	public static String[]purposestatuss= {"完全没戏","先观察着","较有兴趣","非常有意向","已经确定"};
+	public static String[]purposestatuss= {"未指定","完全没戏","先观察着","较有兴趣","非常有意向","已经确定"};
 	public String getPurposestatuss() {
 		return purposestatuss[purposestatus];
 	}
-	public static String[]assessstatuss= {"截至","无果","有预约"};
+	public static String[]assessstatuss= {"未指定","截至","无果","有预约"};
 	public String getAssessstatuss() {
 		return assessstatuss[assessstatus];
 	}
+	public static void setAssessstatuss(String[] assessstatuss) {
+		C_revisit.assessstatuss = assessstatuss;
+	}
+	// 未修改
 	public static String[]execstatuss= {"正常","转出","完成"};
 	public String getExecstatuss() {
 		return execstatuss[execstatus];

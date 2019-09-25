@@ -107,7 +107,7 @@ String formatDate=sdf.format(date);
     <label class="layui-form-label">业绩人员</label>
     <div class="layui-input-block">
      <!--  <input type="text" name="compoperatorids"  autocomplete="off" placeholder="请输入业绩人员" class="layui-input"> -->
-      <input type="text" name="compoperatornames" autocomplete="off" placeholder="请输入业绩人员" class="layui-input" id="demo">
+      <input type="text" name="compoperatornames" readonly="readonly" autocomplete="off" placeholder="请输入业绩人员" class="layui-input" id="demo">
       <input type="hidden" name="compoperatorids">
     </div>
   </div>

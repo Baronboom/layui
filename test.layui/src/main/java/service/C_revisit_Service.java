@@ -5,6 +5,7 @@ import java.util.List;
 import model.C_client;
 import model.C_operator;
 import model.C_revisit;
+import model.Status;
 import utils.ReturnInfo;
 
 public interface C_revisit_Service {
@@ -24,6 +25,9 @@ public interface C_revisit_Service {
 	
 	// ÐÞ¸Ä
 	public void update(C_revisit b);
+	
+	// ÐÞ¸ÄClient
+	public void updatec(Status b);
 	
 	// É¾³ý
 	public void delete(Integer b);

@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
@@ -15,6 +17,7 @@ import model.C_client;
 import model.C_clienttype;
 import model.C_operator;
 import model.C_revisit;
+import model.Status;
 import service.C_revisit_Service;
 import utils.ReturnInfo;
 import utils.ReturnJson;
@@ -24,6 +27,9 @@ import utils.ReturnJson;
 public class C_revisit_Controller {
 	@Autowired
 	C_revisit_Service service;
+	
+	Date date = new Date();
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo select(String txt,Integer page,Integer limit) {
@@ -36,6 +42,19 @@ public class C_revisit_Controller {
 	
 	@RequestMapping("insert")
 	public @ResponseBody ReturnJson insert(C_revisit b){
+		
+		
+		Status sta = new Status();
+		sta.setId(b.getClientid());
+		sta.setAssessstatus(b.getAssessstatus());
+		sta.setClientstatus(b.getClientstatus());
+		sta.setExecstatus(b.getExecstatus());
+		sta.setLinkstatus(b.getLinkstatus());
+		sta.setPurposestatus(b.getPurposestatus());
+		service.updatec(sta);
+		
+		String formatDate=sdf.format(date);
+		b.setCreatedate(formatDate);
 		Subject currentUser = SecurityUtils.getSubject();
         Session session = currentUser.getSession();
         C_operator op = (C_operator) session.getAttribute("C_operator");
@@ -86,6 +105,16 @@ public class C_revisit_Controller {
 	
 	@RequestMapping("update")
 	public @ResponseBody ReturnJson update(C_revisit b){
+		
+		Status sta = new Status();
+		sta.setId(b.getClientid());
+		sta.setAssessstatus(b.getAssessstatus());
+		sta.setClientstatus(b.getClientstatus());
+		sta.setExecstatus(b.getExecstatus());
+		sta.setLinkstatus(b.getLinkstatus());
+		sta.setPurposestatus(b.getPurposestatus());
+		service.updatec(sta);
+		
 		service.update(b);
 		return new ReturnJson();
 	}
@@ -96,4 +125,5 @@ public class C_revisit_Controller {
 		service.delete(id);
 		return new ReturnJson();
 	}
+	
 }

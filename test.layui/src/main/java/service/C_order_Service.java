@@ -17,7 +17,7 @@ public interface C_order_Service {
 	public C_order selectByid(Integer id);
 	
 	public C_orderdetails selecotByid(Integer id);
-	
+	public C_orderdetails selecend(Integer id);
 	// ≤È—Øoperator
 	public List<C_operator> selectoperator();
 	

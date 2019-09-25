@@ -53,6 +53,7 @@ public interface C_order_Dao {
 	 @Update("update C_order set name=#{name},clientid=#{clientid},createdate=#{createdate},compdate=#{compdate},orderdate=#{orderdate},startdate=#{startdate},enddate=#{enddate},operatorid=#{operatorid},info=#{info},files=#{files},compoperatorids=#{compoperatorids},compoperatornames=#{compoperatornames},compweight=#{compweight},status=#{status},amount=#{amount},comments=#{comments} where id=#{id}")
 	 public void update(C_order t);
 
-
-
+	 @Select("select c_orderdetails.* from c_orderdetails  ${where} ${limit}")
+	public List<C_orderdetails> selectend(@Param("where") String where,@Param("limit") String limit);
+	 
 }

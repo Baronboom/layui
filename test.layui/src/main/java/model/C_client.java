@@ -12,6 +12,8 @@ public class C_client {
 	private Integer count;
 	private String comments;
 	
+	private Integer operatorid;
+	private Integer clientid;
 	private Integer clienttypeid;
 	private Integer createoperatorid;
 	private Integer srcid;
@@ -28,6 +30,12 @@ public class C_client {
 	private Integer assessstatus;
 	private Integer execstatus;
 	
+	public Integer getOperatorid() {
+		return operatorid;
+	}
+	public void setOperatorid(Integer operatorid) {
+		this.operatorid = operatorid;
+	}
 	public static String[]sexss= {"²»ÏÞ","ÄÐ","Å®"};
 	public String getSexss() {
 		return sexss[sex];
@@ -58,8 +66,12 @@ public class C_client {
 	}
 	
 	
-	
-	
+	public Integer getClientid() {
+		return clientid;
+	}
+	public void setClientid(Integer clientid) {
+		this.clientid = clientid;
+	}
 	
 	public String getOperatornames() {
 		return operatornames;

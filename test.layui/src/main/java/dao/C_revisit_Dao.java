@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import model.C_client;
 import model.C_operator;
 import model.C_revisit;
+import model.Status;
 
 @Repository
 public interface C_revisit_Dao {
@@ -40,7 +41,8 @@ public interface C_revisit_Dao {
 
 	 @Update("update C_revisit set operatorid=#{operatorid},name=#{name},createdate=#{createdate},clientid=#{clientid},linkstatus=#{linkstatus},clientstatus=#{clientstatus},purposestatus=#{purposestatus},assessstatus=#{assessstatus},execstatus=#{execstatus},askinfo=#{askinfo},followinfo=#{followinfo},probleminfo=#{probleminfo},status=#{status},comments=#{comments} where id=#{id}")
 	 public void update(C_revisit t);
-
-
+	 
+	 @Update("update C_client set linkstatus=#{linkstatus},clientstatus=#{clientstatus},purposestatus=#{purposestatus},assessstatus=#{assessstatus},execstatus=#{execstatus} where id=#{id}")
+	 public void updatec(Status b);
 
 }

@@ -142,20 +142,24 @@ position: left;
     </div>
   </div>
 
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">处理人</label>
     <div class="layui-input-block">
       <input type="text" name="operatornames" readonly="readonly"  autocomplete="off" placeholder="请输入处理人" class="layui-input" id="demo">
    	 <input type="hidden" name="operatorids">
     </div>
-  </div>
-   <div class="layui-form-item mystyle">
+  </div> -->
+  
+<!--    <div class="layui-form-item mystyle">
     <label class="layui-form-label">回访次数</label>
     <div class="layui-input-block">
-      <!-- <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input"> -->
+      <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">
    <input type="text" name="count" autocomplete="off" placeholder="请输入回访次数" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')"/>
+    	<input type="hidden" name="count" value="0" >
     </div>
-  </div>
+  </div> -->
+  <input type="hidden" name="count" value="0" >
+  
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">

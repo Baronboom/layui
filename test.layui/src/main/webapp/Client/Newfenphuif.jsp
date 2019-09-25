@@ -41,21 +41,21 @@ position: left;
     </div>
   </div>
   
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
-      <select name="clientid" disabled="disabled">
+      <select name="clientid" >
       </select>
     </div>
-  </div>
+  </div> -->
   
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">回访人</label>
     <div class="layui-input-block">
       <select name="operatorid" >
       </select>
     </div>
-  </div>
+  </div> -->
   
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户状态</label>
@@ -165,7 +165,7 @@ if(id.length>0){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
 			  /* s */
-			  $.post("update", data.field, function(json) {
+			  $.post("updatehf", data.field, function(json) {
 				  
 				  closeFrame();
 				  parent.fresh('demo');

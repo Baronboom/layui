@@ -12,13 +12,16 @@
     <!-- id=shiroFilter要与web.xml里的过滤器名字一致 -->
     <bean id="shiroFilter"  class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager"  ref="securityManager"></property>
+        <!--设置用户没有登录时的跳转地址-->
         <property name="loginUrl"  value="/login.html"></property>
+        <!--设置用户登录成功时的跳转地址-->
         <property name="successUrl"  value="/index.html"></property>
-        <!-- 用户访问未对其授权的资源时，所显示的连接 -->
+        <!--设置用户访问未对其授权的资源时，所跳转的地址-->
         <property name="unauthorizedUrl"  value="/unauthorizedUrl"></property>
        
        
         <!-- 这是对路径的一个判断，只要不在这里写的，默认都通过/*/**=authc -->
+        <!--对哪个后端接口使用哪个过滤器进行配置，等号后边是shiro内置过滤器的名字-->
         <property name="filterChainDefinitions">
             <value>
                 /login.html=anon

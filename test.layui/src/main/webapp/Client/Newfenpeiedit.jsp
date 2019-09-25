@@ -34,7 +34,7 @@ position: left;
 <input type="hidden" name="id" > 
 </c:if>
 
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
       <input type="text" name="name"  autocomplete="off" placeholder="请输入客户姓名" class="layui-input">
@@ -50,70 +50,70 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
-      <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input"> -->
+      <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input">
     <input class="layui-input" name="tel" autocomplete="off" type="text" placeholder="请输入客户电话" oninput="value=value.replace(/[^\d]/g,'')" maxlength=11></input>
     </div>
-  </div>
+  </div> -->
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">QQ</label>
     <div class="layui-input-block">
      <!-- <input type="text" name="qq"  autocomplete="off" placeholder="请输入客户QQ" class="layui-input"> -->
-     <input type="text" name="qq" class="layui-input" autocomplete="off" placeholder="请输入客户QQ"  oninput="value=value.replace(/[^\d]/g,'')"/>
+     <input type="text" name="qq" class="layui-input" readonly="readonly" autocomplete="off" placeholder="请输入客户QQ"  oninput="value=value.replace(/[^\d]/g,'')"/>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
       <!-- <input type="text" name="email"  autocomplete="off" placeholder="请输入客户邮箱" class="layui-input"> -->
-   	<input type="email" name="email" autocomplete="off" placeholder="请输入客户邮箱" class="layui-input" />
+   	<input type="email" name="email" readonly="readonly" autocomplete="off" placeholder="请输入客户邮箱" class="layui-input" />
     </div>
   </div>
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">额外信息</label>
     <div class="layui-input-block">
       <input type="text" name="infos"  autocomplete="off" placeholder="请输入客户额外信息" class="layui-input">
     </div>
-  </div>
+  </div> -->
   
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户状态</label>
     <div class="layui-input-block">
-      <select name="clientstatus" >
+      <select name="clientstatus" disabled="disabled" >
       </select>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话状态</label>
     <div class="layui-input-block">
-      <select name="linkstatus" >
+      <select name="linkstatus" disabled="disabled">
       </select>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">意向状态</label>
     <div class="layui-input-block">
-      <select name="purposestatus" >
+      <select name="purposestatus" disabled="disabled">
       </select>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">评估状态</label>
     <div class="layui-input-block">
-      <select name="assessstatus" >
+      <select name="assessstatus" disabled="disabled">
       </select>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">处理状态</label>
     <div class="layui-input-block">
-      <select name="execstatus" >
+      <select name="execstatus" disabled="disabled">
       </select>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">信息状态</label>
     <div class="layui-input-block">
-      <select name="status" >
+      <select name="status" disabled="disabled">
       </select>
     </div>
   </div>
@@ -121,28 +121,28 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户类型</label>
     <div class="layui-input-block">
-      <select name="clienttypeid" >
+      <select name="clienttypeid" disabled="disabled">
       </select>
     </div>
   </div>
   
-   <!-- <div class="layui-form-item mystyle">
+    <div class="layui-form-item mystyle">
     <label class="layui-form-label">创建人</label>
     <div class="layui-input-block">
-      <select name="createoperatorid" >
+      <select name="createoperatorid" disabled="disabled">
       </select>
     </div>
-  </div> -->
+  </div>
   
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">信息来源</label>
     <div class="layui-input-block">
-      <select name="srcid" >
+      <select name="srcid" disabled="disabled">
       </select>
     </div>
   </div>
 
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">处理人</label>
     <div class="layui-input-block">
       <input type="text" name="operatornames" readonly="readonly"  autocomplete="off" placeholder="请输入处理人" class="layui-input" id="demo">
@@ -152,29 +152,29 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">回访次数</label>
     <div class="layui-input-block">
-      <!-- <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input"> -->
+      <input type="text" name="count"  autocomplete="off" placeholder="请输入回访次数" class="layui-input">
    <input type="text" name="count" autocomplete="off" placeholder="请输入回访次数" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')"/>
     </div>
-  </div>
-   <div class="layui-form-item mystyle">
+  </div> -->
+  <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">
       <input type="text" name="comments"  autocomplete="off" placeholder="comments" class="layui-input">
     </div>
   </div>
   
-  <!--  <div class="layui-form-item mystyle">
+     <div class="layui-form-item mystyle">
     <label class="layui-form-label" for="meeting">创建时间</label>
     <div class="layui-input-block">
 		<input  class="mydate" id="meeting" name="createdate" type="date" />
     </div>
-  </div> -->
+  </div>
   
    <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
-  </div>
+  </div> -->
 </form>
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
@@ -187,12 +187,14 @@ function init(){
 		render('myform', json);
 		 /* s */
 	    getarray("getSexs",{},"[name=sex]",json.sex);
+		 
 		getarray("getStas",{},"[name=status]",json.status);
 		getarray("getLinkstatus",{},"[name=linkstatus]",json.linkstatus);
 		getarray("getClientstatus",{},"[name=clientstatus]",json.clientstatus);
 		getarray("getPurposestatus",{},"[name=purposestatus]",json.purposestatus);
 		getarray("getAssessstatus",{},"[name=assessstatus]",json.assessstatus);
 		getarray("getExecstatus",{},"[name=execstatus]",json.execstatus);
+		
 	    getlist("getClienttype",{},"[name=clienttypeid]",json.clienttypeid);
 	    getlist("getOperator",{},"[name=createoperatorid]",json.createoperatorid);
 	    getlist("getSrc",{},"[name=srcid]",json.srcid);

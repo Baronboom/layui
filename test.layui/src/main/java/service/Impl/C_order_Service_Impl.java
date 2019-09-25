@@ -35,6 +35,10 @@ public class C_order_Service_Impl implements C_order_Service{
 	public C_orderdetails selecotByid(Integer id) {
 		return (C_orderdetails)dao.selecto(" where c_orderdetails.orderid="+id," limit 1").get(0);
 	}
+
+	public C_orderdetails selecend(Integer id) {
+		return (C_orderdetails)dao.selectend(" where c_orderdetails.orderid in (select c_order.id from c_order where c_order.clientid = '"+id+"')"," limit 1").get(0);
+	}
 	
 	public List<C_operator> selectoperator() {
 		return dao.selectoperator();

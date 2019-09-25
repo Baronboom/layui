@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -52,6 +54,37 @@ public class C_operator_Controller {
 		else txt="";
 		return service.select(txt, page, limit);
 	}
+
+	// 新分配 页面，批量分配到公共池，只获取公共池(用户名)
+	@RequestMapping("newpublicindex")
+	public @ResponseBody ReturnInfo newpublicindex(String txt,Integer page,Integer limit) {
+		if(txt!=null&&txt.length()>0)txt=" where C_operator.name like '%"+txt+"%'";
+		else txt=" where C_operator.id = 4";
+		return service.select(txt, page, limit);
+	}
+	
+	// 公共池 页面，批量分配到新分配，只获取新分配(用户名) 
+	@RequestMapping("publicindex")
+	public @ResponseBody ReturnInfo publicindex(String txt,Integer page,Integer limit) {
+		
+		Subject currentUser = SecurityUtils.getSubject();
+        Session session = currentUser.getSession();
+        C_operator op = (C_operator) session.getAttribute("C_operator");
+		
+		if(txt!=null&&txt.length()>0)txt=" where C_operator.name like '%"+txt+"%'";
+		else txt=" where C_operator.id = '"+op.getId()+"' ";
+		return service.select(txt, page, limit);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("insert")
 	public @ResponseBody ReturnJson insert(C_operator b){

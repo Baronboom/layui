@@ -37,48 +37,52 @@ position: left;
   <div class="layui-form-item mystyle">
     <label class="layui-form-label">合同名称</label>
     <div class="layui-input-block">
-      <select name="orderid" >
-      </select>
+       <select name="orderid" disabled="disabled" >
+      </select> 
+   	<!-- <input type="text" name="orderid" disabled="disabled" autocomplete="off" placeholder="请输入合同名称" class="layui-input" > -->
     </div>
   </div>
   <div class="layui-form-item mystyle">
     <label class="layui-form-label">产品名称</label>
     <div class="layui-input-block">
-      <select name="productid" >
+	    <select name="productid" disabled="disabled">
       </select>
+    <!-- <input type="text" name="productid" disabled="disabled" autocomplete="off" placeholder="请输入产品名称" class="layui-input" > -->
     </div>
   </div>
 	
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">数量</label>
     <div class="layui-input-block">
-      <input type="text" name="count"  autocomplete="off" placeholder="请输入数量" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
+      <input type="text" name="count" disabled="disabled" autocomplete="off" placeholder="请输入数量" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">金额</label>
     <div class="layui-input-block">
-      <input type="text" name="amount"  autocomplete="off" placeholder="请输入金额" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
+      <input type="text" name="amount" disabled="disabled" autocomplete="off" placeholder="请输入金额" class="layui-input" oninput="value=value.replace(/[^\d]/g,'')">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">折扣</label>
     <div class="layui-input-block">
       <!-- <input type="text" name="desc"  autocomplete="off" placeholder="请输入折扣" class="layui-input"> -->
-    <input type="text" name="desca"  autocomplete="off" placeholder="请输入折扣" class="layui-input" oninput="inputnum(this)">
+    <input type="text" name="desca"disabled="disabled"  autocomplete="off" placeholder="请输入折扣" class="layui-input" oninput="inputnum(this)">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">评论</label>
     <div class="layui-input-block">
-      <input type="text" name="comments"  autocomplete="off" placeholder="请输入评论" class="layui-input">
+      <input type="text" name="comments" disabled="disabled" autocomplete="off" placeholder="请输入评论" class="layui-input">
     </div>
   </div>
-   <div class="layui-form-item">
+  
+<!--    <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
     </div>
-  </div>
+  </div> -->
+  
 </form>
 <!-- layui.use(['form',], function(){ -->
 <script type="text/javascript">
@@ -95,7 +99,7 @@ function inputnum(obj,val){
 var id="${param.id}";
 function init(){
 	 /* s */
-	$.post("edit",{id:id}, function(json) {
+	$.post("editend",{id:id}, function(json) {
 		render('myform', json);
 		 /* s */
 	    getlist("getProduct",{},"[name=productid]",json.productid);

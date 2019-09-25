@@ -70,7 +70,7 @@ public class UserRealm extends AuthorizingRealm {
     Session session = currentUser.getSession();
     session.touch();
     session.setAttribute("C_operator",user);
-    
+    SecurityUtils.getSubject().getSession().setTimeout(3600000);
     if (null == user)
         {
             throw new  AccountException("username is not exist");

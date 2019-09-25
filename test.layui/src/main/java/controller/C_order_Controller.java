@@ -88,10 +88,16 @@ public class C_order_Controller {
 	public @ResponseBody List<C_product> getProduct(){
 		return service.selectproduct();
 	}
-	
+
 	@RequestMapping("edito")
 	public @ResponseBody C_orderdetails edito(Integer id){
 		return 	service.selecotByid(id);
+	}
+	
+	// 已完成客户 合同明细查看
+	@RequestMapping("editend")
+	public @ResponseBody C_orderdetails editend(Integer id){
+		return 	service.selecend(id);
 	}
 	
 	@RequestMapping("update")
