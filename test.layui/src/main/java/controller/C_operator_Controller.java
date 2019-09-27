@@ -54,6 +54,14 @@ public class C_operator_Controller {
 		else txt="";
 		return service.select(txt, page, limit);
 	}
+	
+	// 未分配客户 分配时 不让查到公共池
+	@RequestMapping("selectnoall")
+	public @ResponseBody ReturnInfo selectnoall(String txt,Integer page,Integer limit) {
+		if(txt!=null&&txt.length()>0)txt=" where C_operator.name like '%"+txt+"%' and c_operator.name != '公共池'";
+		else txt=" where c_operator.name != '公共池'";
+		return service.select(txt, page, limit);
+	}
 
 	// 新分配 页面，批量分配到公共池，只获取公共池(用户名)
 	@RequestMapping("newpublicindex")

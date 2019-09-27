@@ -37,13 +37,13 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入客户姓名" class="layui-input">
+      <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入客户姓名"  class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">性别</label>
     <div class="layui-input-block">
-      <select name="sex" >
+      <select name="sex"  >
       </select>
     </div>
   </div>
@@ -51,31 +51,31 @@ position: left;
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
       <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入客户电话" class="layui-input"> -->
-    <input class="layui-input" name="tel" autocomplete="off" type="text" placeholder="请输入客户电话" oninput="value=value.replace(/[^\d]/g,'')" maxlength=11></input>
+    <input class="layui-input" lay-verify="required" name="tel" autocomplete="off" type="text" placeholder="请输入客户电话"  oninput="value=value.replace(/[^\d]/g,'')" maxlength=11></input>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">QQ</label>
     <div class="layui-input-block">
      <!-- <input type="text" name="qq"  autocomplete="off" placeholder="请输入客户QQ" class="layui-input"> -->
-     <input type="text" name="qq" class="layui-input" autocomplete="off" placeholder="请输入客户QQ"  oninput="value=value.replace(/[^\d]/g,'')"/>
+     <input type="text" name="qq" lay-verify="required" class="layui-input" autocomplete="off" placeholder="请输入客户QQ"  oninput="value=value.replace(/[^\d]/g,'')"/>
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">邮箱</label>
     <div class="layui-input-block">
       <!-- <input type="text" name="email"  autocomplete="off" placeholder="请输入客户邮箱" class="layui-input"> -->
-   	<input type="email" name="email" autocomplete="off" placeholder="请输入客户邮箱" class="layui-input" />
+   	<input type="email" name="email" lay-verify="email" autocomplete="off" placeholder="请输入客户邮箱"  class="layui-input" />
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">额外信息</label>
     <div class="layui-input-block">
-      <input type="text" name="infos"  autocomplete="off" placeholder="请输入客户额外信息" class="layui-input">
+      <input type="text" name="infos" lay-verify="required" autocomplete="off" placeholder="请输入客户额外信息" class="layui-input">
     </div>
   </div>
   
-   <div class="layui-form-item mystyle">
+   <!-- <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户状态</label>
     <div class="layui-input-block">
       <select name="clientstatus" >
@@ -116,12 +116,12 @@ position: left;
       <select name="status" >
       </select>
     </div>
-  </div>
+  </div> -->
   
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户类型</label>
     <div class="layui-input-block">
-      <select name="clienttypeid" >
+      <select name="clienttypeid"  >
       </select>
     </div>
   </div>
@@ -163,7 +163,7 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">
-      <input type="text" name="comments"  autocomplete="off" placeholder="comments" class="layui-input">
+      <input type="text" lay-verify="required" name="comments"  autocomplete="off" placeholder="comments"  class="layui-input">
     </div>
   </div>
   
@@ -227,21 +227,21 @@ if(id.length>0){
 	getarray("getPurposestatus",{},"[name=purposestatus]",0);
 	getarray("getAssessstatus",{},"[name=assessstatus]",0);
 	getarray("getExecstatus",{},"[name=execstatus]",0);
-    getlist("getClienttype",{},"[name=clienttypeid]",0);
+    getlist("getClienttype",{},"[name=clienttypeid]",1);
     getlist("getOperator",{},"[name=createoperatorid]",0);
-    getlist("getSrc",{},"[name=srcid]",0);
+    getlist("getSrc",{},"[name=srcid]",1);
 	
 	layui.use('form', function(){
 		  var form = layui.form;
 		  form.on('submit(demo1)', function(data){
-			 /* s */
+			 
 			  $.post("insert", data.field, function(json) {
 				  closeFrame();
 				  parent.fresh('demo');
 				}, "json");
-			    
-			    return false;
-			  });
+			  
+			 return false;
+		});
 	});
 }
 

@@ -107,7 +107,7 @@
 					field : 'infos',
 					title : '额外信息',
 					width : 120
-				}, {
+				}/* , {
 					field : 'clientstatuss',
 					title : '客户状态',
 					width : 120
@@ -131,7 +131,7 @@
 					field : 'statuss',
 					title : '信息状态',
 					width : 120
-				}, {
+				} */, {
 					field : 'clienttypename',
 					title : '客户类型',
 					width : 120
@@ -143,7 +143,7 @@
 					field : 'srcname',
 					title : '信息来源',
 					width : 120
-				}, {
+				}/* , {
 					field : 'operatornames',
 					title : '处理人',
 					width : 120
@@ -151,7 +151,7 @@
 					field : 'count',
 					title : '回访次数',
 					width : 120
-				}, {
+				} */, {
 					field : 'comments',
 					title : 'comments',
 					width : 120

@@ -29,7 +29,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">产品名称</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
@@ -37,13 +37,13 @@
     <div class="layui-input-block">
       <!-- <input type="text" name="amount"  autocomplete="off" placeholder="请输入标题" class="layui-input"> -->
       <!-- <input type="text" name="amount" class="inp" value="0" onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (!/^[\d]+$/ig.test(this.value)){this.value='';}}"/> -->
-     <input type="text" class="layui-input" placeholder="请输入金额" name="amount" oninput="inputnum(this)">
+     <input type="text" class="layui-input" lay-verify="required" placeholder="请输入金额" name="amount" oninput="inputnum(this)">
     </div>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">产品描述</label>
     <div class="layui-input-block">
-      <input type="text" name="info"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="info" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
   

@@ -32,7 +32,7 @@ top:30px;
   <div class="layui-form-item">
     <label class="layui-form-label low">工作组名</label>
     <div class="layui-input-block low">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+      <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
     </div>
   </div>
   

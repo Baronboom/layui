@@ -70,7 +70,7 @@ tableSelect.render({
 	searchKey: 'txt',	//搜索输入框的name值 默认keyword
 	searchPlaceholder: '关键词搜索',	//搜索输入框的提示文字 默认关键词搜索
 	table: {	//定义表格参数，与LAYUI的TABLE模块一致，只是无需再定义表格elem
-		url:'../Operator/index',
+		url:'../Operator/selectnoall',
 		cols: [[
 			{type: 'checkbox', fixed: 'left'},
 		{

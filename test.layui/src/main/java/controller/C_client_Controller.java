@@ -141,6 +141,16 @@ public class C_client_Controller {
 	
 	@RequestMapping("insert")
 	public @ResponseBody ReturnJson insert(C_client b){
+		
+		b.setClientstatus(0);
+		b.setLinkstatus(0);
+		b.setPurposestatus(0);
+		b.setAssessstatus(0);
+		b.setExecstatus(0);
+		b.setStatus(0);
+		
+		
+		
 		String formatDate=sdf.format(date);
 		// 自动插入当前日期
 		b.setCreatedate(formatDate);

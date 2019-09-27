@@ -31,20 +31,20 @@ position: left;
   <div class="layui-form-item mystyle">
     <label class="layui-form-label">员工名</label>
     <div class="layui-input-block">
-      <input type="text" name="name"  autocomplete="off" placeholder="请输入员工名" class="layui-input">
+      <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入员工名" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">员工密码</label>
     <div class="layui-input-block">
-      <input type="text" name="pass"  autocomplete="off" placeholder="请输入密码" class="layui-input">
+      <input type="text" name="pass" lay-verify="required" autocomplete="off" placeholder="请输入密码" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">电话</label>
     <div class="layui-input-block">
      <!-- <input type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input"> -->
-    <input oninput="inputnum(this)" type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input" maxlength="11">
+    <input oninput="inputnum(this)" lay-verify="required" type="text" name="tel"  autocomplete="off" placeholder="请输入电话" class="layui-input" maxlength="11">
     </div>
   </div>
    <div class="layui-form-item mystyle">
@@ -116,7 +116,7 @@ if(id.length>0){
 	 /* s */
 	getarray("getStatus",{},"[name=status]",0);
 	getarray("getPower",{},"[name=power]",0);
-	getlist1("getWorkgroup",{},"[name=groupid]",0);
+	getlist1("getWorkgroup",{},"[name=groupid]",1);
 	
 	layui.use('form', function(){
 		  var form = layui.form;
