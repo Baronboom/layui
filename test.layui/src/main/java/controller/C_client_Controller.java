@@ -78,9 +78,9 @@ public class C_client_Controller {
         Session session = currentUser.getSession();
         C_operator op = (C_operator) session.getAttribute("C_operator");
 		if(txt!=null&&txt.length()>0)txt=" where c_client.operatorids = '"+op.getId()+"' and c_client.name like '%"+txt+"%' and assessstatus != 3 and count >0";
-		else txt=" where c_client.operatorids = '"+op.getId()+"' and assessstatus != 3 and count >0";
+		else txt=" where c_client.operatorids = '"+op.getId()+"' and assessstatus != 3 and count >0   and c_client.execstatus != 2";
 		//System.out.println(txt);
-		return service.select(txt, page, limit);
+		return service.select(txt, page, limit); 
 	}
 
 	// 公共池显示
@@ -88,7 +88,7 @@ public class C_client_Controller {
 	public @ResponseBody ReturnInfo publicpool(String txt,Integer page,Integer limit) {
 		
 		if(txt!=null&&txt.length()>0)txt=" where c_client.id in (select id from c_client where name like '%"+txt+"%')  and c_client.operatorids is null and c_client.count>0";
-		else txt=" where  c_client.operatorids is null and c_client.count>0";
+		else txt=" where  c_client.operatorids is null and c_client.count>0 ";
 		//System.out.println(txt);
 		return service.select(txt, page, limit);
 	}
@@ -234,7 +234,6 @@ public class C_client_Controller {
 
 	@RequestMapping("updateo")
 	public @ResponseBody ReturnJson updateo(fenpei b){
-		//System.out.println(b.getId());
 		service.updateo(b);
 		return new ReturnJson();
 	}
@@ -242,16 +241,13 @@ public class C_client_Controller {
 	// 未分配 ->批量分配
 	@RequestMapping("updateopl")
 	public @ResponseBody ReturnJson updateopl(plfenpei b){
-		//System.out.println(b.getIds());
 		String str = b.getIds();
 		List<String> array = stringToList(str);
 		for (String ss : array) {
 			Integer num = Integer.parseInt(ss);
-			//System.out.println(num);
 			b.setId(num);
 			service.updateopl(b);
 		}
-		//service.updateopl(b);
 		return new ReturnJson();
 	}
 
@@ -262,10 +258,8 @@ public class C_client_Controller {
 		List<String> array = stringToList(str);
 		for (String ss : array) {
 			Integer num = Integer.parseInt(ss);
-			//System.out.println(num);
 			service.updateonpl(num);
 		}
-		//service.updateopl(b);
 		return new ReturnJson();
 	}
 	
@@ -275,28 +269,17 @@ public class C_client_Controller {
 		Subject currentUser = SecurityUtils.getSubject();
         Session session = currentUser.getSession();
         C_operator op = (C_operator) session.getAttribute("C_operator");
-		//System.out.println(op.getId());
-		//System.out.println(b.getIds());
         
 		String str = b.getIds();
 		List<String> array = stringToList(str);
 		for (String ss : array) {
 			Integer num = Integer.parseInt(ss);
-			//System.out.println(num);
-			//service.updateonpl(num);
 			b.setId(num);
-			//System.out.println(b.getId());
-			//System.out.println(b.getOperatorids());
-	        //System.out.println(b.getOperatornames());
 			service.updatepubpl(b); 
 		}
 		//service.updateopl(b);
 		return new ReturnJson();
 	}
-	
-	
-	
-	
 	
 	public static List<String> stringToList(String str) {
 		return Arrays.asList(str.split(","));

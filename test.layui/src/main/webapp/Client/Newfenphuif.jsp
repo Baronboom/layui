@@ -103,25 +103,25 @@ position: left;
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">询问状况</label>
     <div class="layui-input-block">
-      <input type="text" name="askinfo"  autocomplete="off" placeholder="请输入询问状况" class="layui-input">
+      <input type="text" name="askinfo" lay-verify="required" autocomplete="off" placeholder="请输入询问状况" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">跟进措施</label>
     <div class="layui-input-block">
-      <input type="text" name="followinfo"  autocomplete="off" placeholder="请输入客户跟进措施" class="layui-input">
+      <input type="text" name="followinfo" lay-verify="required" autocomplete="off" placeholder="请输入客户跟进措施" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">客户顾虑</label>
     <div class="layui-input-block">
-      <input type="text" name="probleminfo"  autocomplete="off" placeholder="请输入客户顾虑" class="layui-input">
+      <input type="text" name="probleminfo" lay-verify="required" autocomplete="off" placeholder="请输入客户顾虑" class="layui-input">
     </div>
   </div>
    <div class="layui-form-item mystyle">
     <label class="layui-form-label">comments</label>
     <div class="layui-input-block">
-      <input type="text" name="comments"  autocomplete="off" placeholder="请输入comments" class="layui-input">
+      <input type="text" name="comments" lay-verify="required" autocomplete="off" placeholder="请输入comments" class="layui-input">
     </div>
   </div>
   

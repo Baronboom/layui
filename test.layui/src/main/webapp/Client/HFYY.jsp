@@ -30,6 +30,7 @@
 	<!-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a> -->
 	<script type="text/html" id="barDemo">
 	    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="rev">回访</a>
+	    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="res">预约</a>
 		<a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
 	</script>
 		<!--自增索引 -->
@@ -153,7 +154,7 @@
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 120,
+					width : 160,
 					align : 'center'
 				}
 
@@ -204,8 +205,10 @@
 						}, "json"); */
 						openFrame('Newfenphuif.jsp?id=' + data.id); // 回访
 					//});
-				} else {
+				} else if(obj.event === 'edit'){
 					openFrame('Newfenpeiedit.jsp?id=' + data.id); // 查看
+				} else {
+					openFrame('cc.jsp?id=' + data.id); // 预约
 				}
 			});
 

@@ -8,6 +8,6 @@
 </head>
 <body>
 批量导入成功
-${param.ids}
+${param.id}
 </body>
 </html>
